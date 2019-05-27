@@ -77,18 +77,18 @@ export class YiddishContent {
   private assignTooltipForParticle(element) {
     const self = this;
 
-    if (element.particle.type === 'root' || element.particle.type === 'constituent') {
+    if (element.type === 'root' || element.type === 'constituent') {
       return (resolve, reject) => {
-        resolve(YiddishContent.capitalizeFirstLetter(element.particle.type));
+        resolve(YiddishContent.capitalizeFirstLetter(element.type));
       };
     }
 
     return (resolve, reject) => {
       self.http
-        .getDictionaryItem(`${element.particle.type}es`, element.particle.id)
+        .getDictionaryItem(`${element.type}es`, element.id)
         .toPromise()
         .then(data => {
-          resolve(YiddishContent.capitalizeFirstLetter(element.particle.type) + ' | ' + data.description);
+          resolve(YiddishContent.capitalizeFirstLetter(element.type) + ' | ' + data.description);
         });
     };
   }
@@ -166,8 +166,8 @@ export class YiddishContent {
             newField = {
               name: fieldNames[key].viewName,
               values: jsonData['inflections'].map(function (it) {
-                return {name: it.inflection.name + ' ' + it.text,
-                  searchQuery: self.getSearchFieldQuery('Inflection', it.inflection.id)
+                return {name: it.name + ' ' + it.text,
+                  searchQuery: self.getSearchFieldQuery('Inflection', it.id)
                 };
               })
             };
@@ -177,7 +177,7 @@ export class YiddishContent {
               values: jsonData['transcriptions'].map(function (it) {
                 return {
                   name: it.phonography,
-                  searchQuery: self.getSearchFieldQuery('transcriptions', it.transcription.id)
+                  searchQuery: self.getSearchFieldQuery('transcriptions', it.id)
                 };
               })
             };
@@ -205,9 +205,9 @@ export class YiddishContent {
                 // .sort(YiddishContent.sortParticles) // sort particles
                 .map(function (it) {
                   return {
-                    name: it.particle.value,
+                    name: it.value,
                     tooltip: new Promise<string>(self.assignTooltipForParticle(it)),
-                    searchQuery: self.getSearchFieldQuery('particle_' + it.particle.type, it.id ? it.id : it.value)
+                    searchQuery: self.getSearchFieldQuery('particle_' + it.type, it.id ? it.id : it.value)
                   };
               })
             };

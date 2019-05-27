@@ -387,7 +387,7 @@
 .clarin-graph-visualization.style-yiddish g.conceptG,
 .clarin-graph-visualization.style-yiddish g.conceptG circle.inner-node{
     cursor: pointer;
-    fill: #a8b5d6;
+    fill: #d1daf5;
 }
 
 .clarin-graph-visualization.style-plWordNet g.conceptG circle.inner-node{

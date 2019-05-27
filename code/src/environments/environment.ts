@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://156.17.135.55:9070/wordnetloom-server/resources/'
+  // apiUrl: 'http://156.17.135.55:9070/wordnetloom-server/resources/'
+  apiUrl: 'http://156.17.135.29:8888/wordnetloom-server/resources/'
 };
