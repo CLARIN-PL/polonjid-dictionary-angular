@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Inject, OnDestroy, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {Subscription} from 'rxjs';
 
 export interface ModalOptions {

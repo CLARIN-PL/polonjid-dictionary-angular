@@ -13,19 +13,24 @@ import {CurrentStateService} from './services/current-state.service';
 import {AvailableSearchFiltersService} from './services/configuration/available-search-filters.service';
 import {RouterModule, Routes} from '@angular/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
-import {
-  MatButtonModule, MatCheckboxModule, MatChipsModule, MatExpansionModule, MatInputModule, MatListModule,
-  MatFormFieldModule,
-  MatProgressSpinnerModule,
-  MatSelectionList,
-  MatSelectModule,
-  MatSidenavModule, MatTabsModule, MatTooltipModule,
-  MatButtonToggleModule,
-  MatTreeModule,
-  MatIconModule, MatAutocompleteModule,
-  MatCardModule,
-  MatDialogModule,
-} from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule, MatSelectionList } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTreeModule } from '@angular/material/tree';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {SidebarService} from './services/sidebar.service';
 import { ClickOutsideDirective } from './directives/click-outside.directive';

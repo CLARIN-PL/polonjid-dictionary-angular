@@ -4,7 +4,7 @@ import {SidebarService} from '../../services/sidebar.service';
 import {HttpService} from '../../services/http.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import { CurrentStateService } from '../../services/current-state.service';
-import { MatAutocompleteTrigger } from '@angular/material';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import {MatKeyboardService} from '@ngx-material-keyboard/core';
 import {debounceTime, distinctUntilChanged, skipWhile, takeUntil, last, finalize, skipUntil} from 'rxjs/operators';
 
