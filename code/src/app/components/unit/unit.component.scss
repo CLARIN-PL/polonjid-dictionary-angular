@@ -134,7 +134,7 @@
   }
 }
 
-/deep/ .small-toggle-btn.mat-button-toggle.mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+::ng-deep .small-toggle-btn.mat-button-toggle.mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
   /*line-height: unset;*/
   padding: 0 5px;
   line-height: 36px;
@@ -163,7 +163,7 @@
   transition-timing-function: ease-in-out;
 }
 
-/deep/ .mat-tooltip-top-fix{
+::ng-deep .mat-tooltip-top-fix{
   z-index: 2001;
 }
 

@@ -82,20 +82,20 @@
   color: black;
 }
 
-/deep/ .mat-keyboard-key {
+::ng-deep .mat-keyboard-key {
   border-radius: 4px !important;
 }
 
-/deep/ .mat-keyboard-wrapper {
+::ng-deep .mat-keyboard-wrapper {
   background-color: rgba(lighten($primary-color, 15%), 10%) !important;
 }
 
 /*keyboard mobile fix*/
 @media (max-width: 900px){
-/deep/ .mat-keyboard-key {
+::ng-deep .mat-keyboard-key {
   padding: 4px !important;
 }
-/deep/ .mat-keyboard-col {
+::ng-deep .mat-keyboard-col {
   flex: unset !important;
   flex-grow: 0 !important;
   flex-basis: 0 !important;
@@ -103,7 +103,7 @@
 }
 
 /*from internet  https://github.com/ngx-material-keyboard/core/issues/18*/
-/deep/ .mat-keyboard-container {
+::ng-deep .mat-keyboard-container {
 
   padding: unset !important;
   position: absolute !important;
@@ -112,33 +112,33 @@
   width: fit-content !important;
 }
 
-/deep/ .mat-keyboard-container .mat-keyboard-key .mat-keyboard-key{
+::ng-deep .mat-keyboard-container .mat-keyboard-key .mat-keyboard-key{
   padding: 0 0.485rem !important;
 }
 
-/deep/ .mat-keyboard-row:nth-child(1) .mat-keyboard-col{
+::ng-deep .mat-keyboard-row:nth-child(1) .mat-keyboard-col{
   flex-basis: 9.81% !important;
 }
-/deep/ .mat-keyboard-row:nth-child(2) .mat-keyboard-col{
+::ng-deep .mat-keyboard-row:nth-child(2) .mat-keyboard-col{
   flex-basis: 8.35% !important;
 }
-/deep/ .mat-keyboard-row:nth-child(3) .mat-keyboard-col{
+::ng-deep .mat-keyboard-row:nth-child(3) .mat-keyboard-col{
   flex-basis: 7.9% !important;
 }
-/deep/ .mat-keyboard-row:nth-child(4) .mat-keyboard-col,
-/deep/ .mat-keyboard-row:nth-child(5) .mat-keyboard-col{
+::ng-deep .mat-keyboard-row:nth-child(4) .mat-keyboard-col,
+::ng-deep .mat-keyboard-row:nth-child(5) .mat-keyboard-col{
   flex-basis: 25% !important;
 }
 
-/deep/ .mat-keyboard-col{
+::ng-deep .mat-keyboard-col{
   padding: 1px !important;
 }
-/deep/ .mat-keyboard-wrapper{
+::ng-deep .mat-keyboard-wrapper{
   padding: 5px !important;
 }
 
-/deep/ mat-keyboard-container,
-/deep/ .mat-keyboard
+::ng-deep mat-keyboard-container,
+::ng-deep .mat-keyboard
 {
   min-width: 100% !important;
   width: fit-content !important;
@@ -146,8 +146,8 @@
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-  /deep/ {
-    /deep/ .mat-keyboard-wrapper{
+  ::ng-deep {
+    ::ng-deep .mat-keyboard-wrapper{
       padding:10px !important;
     }
     mat-keyboard-container,
@@ -184,7 +184,7 @@
 //}
 }
 @media (min-width: 1200px) {
-  /deep/ .mat-keyboard-col .mat-button-wrapper{
+  ::ng-deep .mat-keyboard-col .mat-button-wrapper{
     font-size: 1.3em !important;
   }
 }
@@ -199,6 +199,6 @@
 }
 
 // lower the main search bar placeholder
-/deep/ .main-search-field.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+::ng-deep .main-search-field.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
   transform: translateY(-1em) scale(.75) perspective(100px) translateZ(.001px) !important;
 }

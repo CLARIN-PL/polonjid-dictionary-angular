@@ -141,7 +141,7 @@ footer{
                 0 1px 3px 0 rgba(0,0,0,.12);
   }
 
-  /deep/ .mat-card-header-text {
+  ::ng-deep .mat-card-header-text {
     width: 100%;
     text-align: center;
   }

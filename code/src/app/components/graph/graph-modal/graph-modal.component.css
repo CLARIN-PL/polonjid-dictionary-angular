@@ -1,4 +1,4 @@
-/deep/ .cdk-overlay-container {
+::ng-deep .cdk-overlay-container {
   z-index: 3000;
 }
 .close-button-right {
@@ -8,7 +8,7 @@
   background-color: #eee;
 }
 
-/deep/ .mat-dialog-container {
+::ng-deep .mat-dialog-container {
   padding: 20px 0 0 0;
   height: 100%;
 }
