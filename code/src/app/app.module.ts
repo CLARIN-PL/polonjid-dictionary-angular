@@ -250,7 +250,7 @@ export function setupTranslateFactory(
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled', scrollOffset: [0, 120]}
+      { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled', scrollOffset: [0, 120], relativeLinkResolution: 'legacy' }
       // {enableTracing: true} // only for debug
     ),
     BrowserModule,
