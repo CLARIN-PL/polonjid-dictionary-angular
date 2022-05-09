@@ -1,5 +1,5 @@
 import {Component, HostListener, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 
 declare const GraphCreator: any;

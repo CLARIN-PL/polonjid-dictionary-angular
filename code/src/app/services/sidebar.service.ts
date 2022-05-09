@@ -1,6 +1,5 @@
 import {Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
+import {Observable, Subject} from 'rxjs';
 import {HttpService} from './http.service';
 import {Router} from '@angular/router';
 import {CurrentStateService} from './current-state.service';

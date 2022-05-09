@@ -1,8 +1,11 @@
+
+import {of as observableOf, Observable} from 'rxjs';
+
+import {debounceTime} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/finally';
-import 'rxjs/add/operator/catch';
+
+
+
 import {lemmas} from './avaliable_lemmas_temp';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -98,7 +101,7 @@ export class HttpService {
       }
       return found;
     };
-    return Observable.of(getLemmas(term, 10)).debounceTime(750);
+    return observableOf(getLemmas(term, 10)).pipe(debounceTime(750));
   }
   getLang(lang) {
     const langPath = `assets/i18n/${lang || 'en'}.json`;

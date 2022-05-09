@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import {HttpService} from '../../../services/http.service';
 import {CurrentStateService} from '../../../services/current-state.service';
 import {ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {SenseContent} from './sensecontent';
 import {YiddishContent} from './yiddishcontent';
 import {SidebarService} from '../../../services/sidebar.service';

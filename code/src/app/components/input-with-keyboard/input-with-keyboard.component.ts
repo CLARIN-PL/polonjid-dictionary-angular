@@ -6,8 +6,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import { CurrentStateService } from '../../services/current-state.service';
 import { MatAutocompleteTrigger } from '@angular/material';
 import {MatKeyboardService} from '@ngx-material-keyboard/core';
-import {debounceTime, distinctUntilChanged, skipWhile, takeUntil, last, finalize} from 'rxjs/operators';
-import {skipUntil} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, skipWhile, takeUntil, last, finalize, skipUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-input-with-keyboard',

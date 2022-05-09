@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpRequest, HttpResponse, HttpInterceptor, HttpHandler } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable, of } from 'rxjs';
 import {  tap } from 'rxjs/operators';
 import {RequestCacheService} from '../services/request-cache.service';
 import { LoadingBarService } from '@ngx-loading-bar/core';
