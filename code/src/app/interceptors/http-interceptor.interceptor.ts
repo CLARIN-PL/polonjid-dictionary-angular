@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpRequest, HttpResponse, HttpInterceptor, HttpHandler } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import {of as observableOf, Observable} from 'rxjs';
 import {  tap } from 'rxjs/operators';
 import {RequestCacheService} from '../services/request-cache.service';
 import { LoadingBarService } from '@ngx-loading-bar/core';
@@ -44,7 +44,7 @@ export class CachingInterceptor implements HttpInterceptor {
 
     if (cachedResponse) {
       this.loadingBar.complete();
-      return Observable.of(cachedResponse);
+      return observableOf(cachedResponse);
     }
 
     this.loadingBar.complete();
