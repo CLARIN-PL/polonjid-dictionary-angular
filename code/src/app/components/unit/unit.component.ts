@@ -10,7 +10,7 @@ import {CurrentStateService} from '../../services/current-state.service';
 })
 export class UnitComponent implements OnInit, OnDestroy {
 
-  @ViewChild('sidebar') sidebarRef;
+  @ViewChild('sidebar', { static: false }) sidebarRef;
   sidebarObsv;
   sidebarLoadingObsv;
   sideBarListStyleListener;

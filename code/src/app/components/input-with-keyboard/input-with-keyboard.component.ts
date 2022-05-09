@@ -20,10 +20,10 @@ export class InputWithKeyboardComponent implements OnInit {
   @Output() advancedPanelOpen = new EventEmitter<boolean>();
   @Output() usingKeyboard = new EventEmitter<boolean>();
 
-  @ViewChild('panel') el;
-  @ViewChild('inputWithKeyboard') inputWithKeyboard: ElementRef;
-  @ViewChild('inputWithKeyboard', { read: MatAutocompleteTrigger }) trigger: MatAutocompleteTrigger;
-  @ViewChild('advancedFilters') advancedFilters;
+  @ViewChild('panel', { static: true }) el;
+  @ViewChild('inputWithKeyboard', { static: true }) inputWithKeyboard: ElementRef;
+  @ViewChild('inputWithKeyboard', { read: MatAutocompleteTrigger, static: true }) trigger: MatAutocompleteTrigger;
+  @ViewChild('advancedFilters', { static: true }) advancedFilters;
 
   useKeyboard = true;
   showAdvancedOptions = false;

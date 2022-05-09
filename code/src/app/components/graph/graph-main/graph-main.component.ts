@@ -18,7 +18,7 @@ export class GraphMainComponent implements OnInit, AfterViewInit {
   // generating random id for new instances of graph
   graphContainerId = 'graph-container' + Math.random().toString(36).substr(2);
   graph: any;
-  @ViewChild('graphContainerDiv') graphContainerDiv: ElementRef;
+  @ViewChild('graphContainerDiv', { static: true }) graphContainerDiv: ElementRef;
   resizeTimeout: number;
   lastClickedNodeIdSubscription: Subscription;
   breakPoint = 768;

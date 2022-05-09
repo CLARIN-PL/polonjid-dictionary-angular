@@ -9,7 +9,7 @@ import {AvailableSearchFiltersService} from '../../services/configuration/availa
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  @ViewChild('form') form: NgForm;
+  @ViewChild('form', { static: true }) form: NgForm;
 
   constructor(private http: HttpService, private availableSearchFilters: AvailableSearchFiltersService) { }
 
