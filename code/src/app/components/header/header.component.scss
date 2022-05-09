@@ -151,7 +151,7 @@ nav i .fa {
   height: 100%;
   padding-top: 70px;
 }
-/deep/ .overlay-nav mat-button-toggle .mat-button-toggle-label-content {
+::ng-deep .overlay-nav mat-button-toggle .mat-button-toggle-label-content {
   color: white;
   font-size: 3em;
   line-height: unset;
@@ -169,7 +169,7 @@ nav i .fa {
   color: white;
   overflow-y: scroll;
 
-  /deep/ label.fancy-checkbox {
+  ::ng-deep label.fancy-checkbox {
     padding: 3px 5px;
     margin: 1px;
     background-color: #ffffff36;
@@ -186,7 +186,7 @@ nav i .fa {
   .fancy-checkbox .unchecked{
     color: #fff;
   }
-  /deep/ .fancy-checkbox i.unchecked {
+  ::ng-deep .fancy-checkbox i.unchecked {
     color: #fff;
   }
   a button,
@@ -201,14 +201,14 @@ nav i .fa {
     mat-form-field.mat-form-field.main-search-field {
       font-size: 16px;
     }
-    /deep/ .main-search-field .mat-form-field-label {
+    ::ng-deep .main-search-field .mat-form-field-label {
       color: #fff;
       //font-size: 2em;
     }
-    /deep/ .main-search-field .mat-form-field-underline {
+    ::ng-deep .main-search-field .mat-form-field-underline {
       background-color: rgba(255, 255, 255, 0.85);
     }
-    /deep/ .main-search-field .mat-form-field-ripple {
+    ::ng-deep .main-search-field .mat-form-field-ripple {
       background-color: #fff;
     }
   }
@@ -241,7 +241,7 @@ nav i .fa {
   border: none;
   margin-top: 16px;
   color: white;
-  /deep/ .mat-button-toggle-label-content {
+  ::ng-deep .mat-button-toggle-label-content {
     line-height: 20px;
   }
   .nav-lang-select-btn:nth-child(1) {

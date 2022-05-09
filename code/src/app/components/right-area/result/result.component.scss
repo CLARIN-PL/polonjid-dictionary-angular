@@ -64,43 +64,43 @@
   height: 90px;
 }
 
-.footer /deep/ .mat-tab-body-wrapper{
+.footer ::ng-deep .mat-tab-body-wrapper{
   max-height: 105px;
 }
-.footer /deep/ .mat-tab-group.vertical .mat-ink-bar{
+.footer ::ng-deep .mat-tab-group.vertical .mat-ink-bar{
   height: 50%;
 }
 
-.footer /deep/ .mat-tab-group.vertical.first-selected .mat-ink-bar{
+.footer ::ng-deep .mat-tab-group.vertical.first-selected .mat-ink-bar{
   height: 50%;
   transform: translate(0, -100%);
 }
 
 /*taken from*/
 /*https://stackblitz.com/edit/angular-material2-vertical-tabs*/
-:host /deep/ .mat-tab-group.vertical {
+:host ::ng-deep .mat-tab-group.vertical {
   flex-direction: row;
 }
-:host /deep/ .mat-tab-group.vertical .mat-tab-header {
+:host ::ng-deep .mat-tab-group.vertical .mat-tab-header {
   border-bottom: none;
 }
-:host /deep/ .mat-tab-group.vertical .mat-tab-header-pagination {
+:host ::ng-deep .mat-tab-group.vertical .mat-tab-header-pagination {
   display: none !important;
 }
-:host /deep/ .mat-tab-group.vertical .mat-tab-labels {
+:host ::ng-deep .mat-tab-group.vertical .mat-tab-labels {
   height: 100%;
   flex-direction: column;
 }
 
-:host /deep/ .mat-tab-group.vertical .mat-tab-label {
+:host ::ng-deep .mat-tab-group.vertical .mat-tab-label {
   height: 50%;
 }
 
-:host /deep/ .mat-tab-group.vertical .mat-ink-bar {
+:host ::ng-deep .mat-tab-group.vertical .mat-ink-bar {
   height: 100%;
   left: 98% !important;
 }
-:host /deep/ .mat-tab-group.vertical .mat-tab-body-wrapper {
+:host ::ng-deep .mat-tab-group.vertical .mat-tab-body-wrapper {
   flex: 1 1 auto;
 }
 

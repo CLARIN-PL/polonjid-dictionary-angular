@@ -7,7 +7,7 @@ import {SenseContent} from './sensecontent';
 import {YiddishContent} from './yiddishcontent';
 import {SidebarService} from '../../../services/sidebar.service';
 import {GraphModalComponent} from '../../graph/graph-modal/graph-modal.component';
-import {MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import {GraphService} from '../../graph/graph.service';
 import {AvailableSearchFiltersService} from '../../../services/configuration/available-search-filters.service';
 
