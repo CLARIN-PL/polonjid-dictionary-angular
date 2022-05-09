@@ -124,7 +124,7 @@ export class GraphMainComponent implements OnInit, AfterViewInit {
     if (this.resizeTimeout) {
       clearTimeout(this.resizeTimeout);
     }
-    this.resizeTimeout = setTimeout((() => {
+    this.resizeTimeout = window.setTimeout((() => {
       const width = event.width,
         height = event.height;
       this.graph.resizeSVG(width, height);
