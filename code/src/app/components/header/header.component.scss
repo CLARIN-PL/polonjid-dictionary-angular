@@ -1,38 +1,38 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
-@import "~variables.scss";
+@import "./variables.scss";
 
-nav{
-  background-color: $primary-color;//rgb(46, 59, 136);
+nav {
+  background-color: $primary-color; //rgb(46, 59, 136);
 }
 
 nav .nav-button {
   color: white;
 }
 
-nav .nav-button.logo{
+nav .nav-button.logo {
   font-size: 1.05em;
 }
 
-nav i{
+nav i {
   color: white;
 }
 
 nav i .fa {
   color: #3f51b5;
 }
-.advanced-search-form{
+.advanced-search-form {
   margin-top: -10px;
   margin-bottom: -15px;
 }
-.fixed-top{
+.fixed-top {
   z-index: 1000;
 }
 
-.lemma-search-form{
+.lemma-search-form {
   /*display: inherit;*/
 }
 
-.fill-remaining-space{
+.fill-remaining-space {
   flex: 1 1 auto;
 }
 .navbar-primary-row {
@@ -50,44 +50,42 @@ nav i .fa {
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
   }
 }
-.second-navbar-row{
+.second-navbar-row {
   top: 62px;
   z-index: 10;
   /*background-color: #e9ecef;*/
   background-color: rgb(220, 220, 220);
 
-  -webkit-transition: top .5s ease-in-out;
-  -moz-transition: top .5s ease-in-out;
-  -ms-transition: top .5s ease-in-out;
-  -o-transition: top .5s ease-in-out;
-  transition: top .5s ease-in-out;
+  -webkit-transition: top 0.5s ease-in-out;
+  -moz-transition: top 0.5s ease-in-out;
+  -ms-transition: top 0.5s ease-in-out;
+  -o-transition: top 0.5s ease-in-out;
+  transition: top 0.5s ease-in-out;
 }
-
 
 .second-navbar-row.hidden {
   top: -100px;
 }
 
-.second-navbar-content{
-  width:100%;
+.second-navbar-content {
+  width: 100%;
   position: relative;
   justify-content: center;
-
 }
 
-.right-nav-second-row{
+.right-nav-second-row {
   position: absolute;
   right: 0;
   top: 0;
 }
-.search-field{
-  width:350px;
+.search-field {
+  width: 350px;
 }
-.nav-item{
+.nav-item {
   text-align: center;
   color: white;
 }
-.nav-item button{
+.nav-item button {
   text-transform: uppercase;
   color: white;
 }
@@ -95,24 +93,24 @@ nav i .fa {
 .nav-item.nav-item-search {
   padding-bottom: 15px;
 }
-.nav-lang-select-btn{
+.nav-lang-select-btn {
   /*padding: */
   color: rgba(255, 255, 255, 0.75);
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.button_container{
+.button_container {
   position: relative;
   height: 27px;
   width: 35px;
   cursor: pointer;
   background-color: transparent;
   border: none;
-  transition: opacity .25s ease;
+  transition: opacity 0.25s ease;
   margin-top: 7px;
 }
 .button_container:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .button_container span {
@@ -124,21 +122,21 @@ nav i .fa {
   position: absolute;
   top: 0;
   left: 0;
-  transition: all .35s ease;
+  transition: all 0.35s ease;
   cursor: pointer;
 }
 
 .button_container.active .top {
   transform: translateY(11px) translateX(0) rotate(45deg);
-  background: #FFF;
+  background: #fff;
 }
 .button_container.active .middle {
   opacity: 0;
-  background: #FFF;
+  background: #fff;
 }
 .button_container.active .bottom {
   transform: translateY(-11px) translateX(0) rotate(-45deg);
-  background: #FFF;
+  background: #fff;
 }
 .button_container span:nth-of-type(2) {
   top: 11px;
@@ -160,7 +158,7 @@ nav i .fa {
 .overlay-nav {
   padding-top: 0px;
   height: 0%;
-  transition: height .5s ease-in-out, padding-top .5s ease-in-out;
+  transition: height 0.5s ease-in-out, padding-top 0.5s ease-in-out;
   //background-color: #2e3b88f0;
   background-color: $primary-color;
   position: fixed;
@@ -183,21 +181,20 @@ nav i .fa {
     }
   }
 
-  .fancy-checkbox .unchecked{
+  .fancy-checkbox .unchecked {
     color: #fff;
   }
   ::ng-deep .fancy-checkbox i.unchecked {
     color: #fff;
   }
   a button,
-  mat-button-toggle .mat-button-toggle-label-content
-  {
-      color: white;
-      font-size: 3em;
-      padding: 20px 0;
-    }
+  mat-button-toggle .mat-button-toggle-label-content {
+    color: white;
+    font-size: 3em;
+    padding: 20px 0;
+  }
 
-  app-input-with-keyboard{
+  app-input-with-keyboard {
     mat-form-field.mat-form-field.main-search-field {
       font-size: 16px;
     }
@@ -220,18 +217,18 @@ nav i .fa {
   font-size: 1.1em;
 }
 
-.small-title{
+.small-title {
   margin-top: 4px;
   text-align: center;
   font-family: Montserrat;
   letter-spacing: -1px;
   max-width: 80%;
   max-height: 40px;
-  font-size: .7em;
+  font-size: 0.7em;
   color: white;
 }
 @include media-breakpoint-up(sm) {
-  .small-title{
+  .small-title {
     margin-top: unset;
     font-size: 1em;
   }
@@ -245,13 +242,13 @@ nav i .fa {
     line-height: 20px;
   }
   .nav-lang-select-btn:nth-child(1) {
-      border-right: 1px white solid;
+    border-right: 1px white solid;
   }
   .nav-lang-select-btn:nth-child(2) {
     border-left: 1px white solid;
   }
 
-  .mat-button-toggle-checked.mat-button-toggle-appearance-standard{
+  .mat-button-toggle-checked.mat-button-toggle-appearance-standard {
     color: white;
   }
 }

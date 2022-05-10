@@ -1,6 +1,6 @@
-@import "~variables.scss";
+@import "./variables.scss";
 
-.long-width-input{
+.long-width-input {
   min-width: 300px;
   padding: 0 10px;
 }
@@ -20,17 +20,15 @@
   display: none;
 }
 
-.fancy-checkbox input[type="checkbox"]:checked ~ .checked
-{
+.fancy-checkbox input[type="checkbox"]:checked ~ .checked {
   display: inline-block;
 }
 
-.fancy-checkbox input[type="checkbox"]:checked ~ .unchecked
-{
+.fancy-checkbox input[type="checkbox"]:checked ~ .unchecked {
   display: none;
 }
 
-.fancy-checkbox .chevron-rotate{
+.fancy-checkbox .chevron-rotate {
   font-size: 0.6em;
   position: relative;
   bottom: -8px;
@@ -43,10 +41,10 @@
 }
 
 /* advanced panel*/
-.advanced-search-panel{
+.advanced-search-panel {
   margin: 0 20px 5px 20px;
 }
-.advanced-search-panel.floating{
+.advanced-search-panel.floating {
   margin: 0;
   z-index: 1000;
   position: fixed;
@@ -55,7 +53,7 @@
   right: 5px;
 }
 @media (min-width: 768px) {
-  .advanced-search-panel.floating{
+  .advanced-search-panel.floating {
     width: 50%;
     top: 108px;
     right: 15px;
@@ -63,22 +61,25 @@
 }
 
 @media (min-width: 992px) {
-  .advanced-search-panel.floating{
+  .advanced-search-panel.floating {
     width: 65%;
     top: 108px;
     right: 17.5%;
   }
 }
 
-.advanced-search-panel .mat-expanded{
+.advanced-search-panel .mat-expanded {
   padding-top: 40px;
 }
 
-::ng-deep .advanced-search-form > .mat-form-field-wrapper.mat-form-field-wrapper > .mat-form-field-underline.mat-form-field-underline{
+::ng-deep
+  .advanced-search-form
+  > .mat-form-field-wrapper.mat-form-field-wrapper
+  > .mat-form-field-underline.mat-form-field-underline {
   background-color: black;
 }
 
-.advanced-search-form input{
+.advanced-search-form input {
   color: black;
 }
 
@@ -91,106 +92,104 @@
 }
 
 /*keyboard mobile fix*/
-@media (max-width: 900px){
-::ng-deep .mat-keyboard-key {
-  padding: 4px !important;
-}
-::ng-deep .mat-keyboard-col {
-  flex: unset !important;
-  flex-grow: 0 !important;
-  flex-basis: 0 !important;
-  flex-direction: column !important;
-}
+@media (max-width: 900px) {
+  ::ng-deep .mat-keyboard-key {
+    padding: 4px !important;
+  }
+  ::ng-deep .mat-keyboard-col {
+    flex: unset !important;
+    flex-grow: 0 !important;
+    flex-basis: 0 !important;
+    flex-direction: column !important;
+  }
 
-/*from internet  https://github.com/ngx-material-keyboard/core/issues/18*/
-::ng-deep .mat-keyboard-container {
+  /*from internet  https://github.com/ngx-material-keyboard/core/issues/18*/
+  ::ng-deep .mat-keyboard-container {
+    padding: unset !important;
+    position: absolute !important;
+    bottom: 0% !important;
+    min-width: 100% !important;
+    width: fit-content !important;
+  }
 
-  padding: unset !important;
-  position: absolute !important;
-  bottom: 0% !important;
-  min-width: 100% !important;
-  width: fit-content !important;
-}
+  ::ng-deep .mat-keyboard-container .mat-keyboard-key .mat-keyboard-key {
+    padding: 0 0.485rem !important;
+  }
 
-::ng-deep .mat-keyboard-container .mat-keyboard-key .mat-keyboard-key{
-  padding: 0 0.485rem !important;
-}
+  ::ng-deep .mat-keyboard-row:nth-child(1) .mat-keyboard-col {
+    flex-basis: 9.81% !important;
+  }
+  ::ng-deep .mat-keyboard-row:nth-child(2) .mat-keyboard-col {
+    flex-basis: 8.35% !important;
+  }
+  ::ng-deep .mat-keyboard-row:nth-child(3) .mat-keyboard-col {
+    flex-basis: 7.9% !important;
+  }
+  ::ng-deep .mat-keyboard-row:nth-child(4) .mat-keyboard-col,
+  ::ng-deep .mat-keyboard-row:nth-child(5) .mat-keyboard-col {
+    flex-basis: 25% !important;
+  }
 
-::ng-deep .mat-keyboard-row:nth-child(1) .mat-keyboard-col{
-  flex-basis: 9.81% !important;
-}
-::ng-deep .mat-keyboard-row:nth-child(2) .mat-keyboard-col{
-  flex-basis: 8.35% !important;
-}
-::ng-deep .mat-keyboard-row:nth-child(3) .mat-keyboard-col{
-  flex-basis: 7.9% !important;
-}
-::ng-deep .mat-keyboard-row:nth-child(4) .mat-keyboard-col,
-::ng-deep .mat-keyboard-row:nth-child(5) .mat-keyboard-col{
-  flex-basis: 25% !important;
-}
+  ::ng-deep .mat-keyboard-col {
+    padding: 1px !important;
+  }
+  ::ng-deep .mat-keyboard-wrapper {
+    padding: 5px !important;
+  }
 
-::ng-deep .mat-keyboard-col{
-  padding: 1px !important;
-}
-::ng-deep .mat-keyboard-wrapper{
-  padding: 5px !important;
-}
+  ::ng-deep mat-keyboard-container,
+  ::ng-deep .mat-keyboard {
+    min-width: 100% !important;
+    width: fit-content !important;
+  }
 
-::ng-deep mat-keyboard-container,
-::ng-deep .mat-keyboard
-{
-  min-width: 100% !important;
-  width: fit-content !important;
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  ::ng-deep {
-    ::ng-deep .mat-keyboard-wrapper{
-      padding:10px !important;
+  // Small devices (landscape phones, 576px and up)
+  @media (min-width: 576px) {
+    ::ng-deep {
+      ::ng-deep .mat-keyboard-wrapper {
+        padding: 10px !important;
+      }
+      mat-keyboard-container,
+      .mat-keyboard {
+        min-width: 576px !important;
+        //width: fit-content !important;
+      }
     }
+  }
+
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
     mat-keyboard-container,
     .mat-keyboard {
-      min-width: 576px !important;
-      //width: fit-content !important;
+      min-width: 700px !important;
     }
   }
-}
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  mat-keyboard-container,
-  .mat-keyboard {
-    min-width: 700px !important;
-  }
-}
-
-//// Large devices (desktops, 992px and up)
-//@media (min-width: 992px) {
-//  mat-keyboard-container,
-//  .mat-keyboard {
-//    min-width: 900px !important;
-//  }
-//}
-//
-//// Extra large devices (large desktops, 1200px and up)
-//@media (min-width: 1200px) {
-//  mat-keyboard-container,
-//  .mat-keyboard {
-//    min-width: 1000px !important;
-//    max-width: 80% !important;
-//  }
-//}
+  //// Large devices (desktops, 992px and up)
+  //@media (min-width: 992px) {
+  //  mat-keyboard-container,
+  //  .mat-keyboard {
+  //    min-width: 900px !important;
+  //  }
+  //}
+  //
+  //// Extra large devices (large desktops, 1200px and up)
+  //@media (min-width: 1200px) {
+  //  mat-keyboard-container,
+  //  .mat-keyboard {
+  //    min-width: 1000px !important;
+  //    max-width: 80% !important;
+  //  }
+  //}
 }
 @media (min-width: 1200px) {
-  ::ng-deep .mat-keyboard-col .mat-button-wrapper{
+  ::ng-deep .mat-keyboard-col .mat-button-wrapper {
     font-size: 1.3em !important;
   }
 }
 
 .autocomplete-option-main {
-  min-width:155px;
+  min-width: 155px;
   display: inline-block;
 }
 .autocomplete-option-small {
@@ -199,6 +198,8 @@
 }
 
 // lower the main search bar placeholder
-::ng-deep .main-search-field.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-  transform: translateY(-1em) scale(.75) perspective(100px) translateZ(.001px) !important;
+::ng-deep
+  .main-search-field.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float
+  .mat-form-field-label {
+  transform: translateY(-1em) scale(0.75) perspective(100px) translateZ(0.001px) !important;
 }

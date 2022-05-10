@@ -1,46 +1,45 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
-@import "~variables.scss";
+@import "./variables.scss";
 
-.app-container{
+.app-container {
   height: 100%;
   padding-top: 62px;
 }
-.sidebar-list{
+.sidebar-list {
   padding-top: 65px;
 }
 
-.option-area{
+.option-area {
   background-color: white;
   box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.12);
   padding-right: 0;
   padding-left: 0;
   z-index: 10;
-  position:fixed;
+  position: fixed;
   top: 62px;
   min-height: calc(100vh - 62px);
-  transition: transform ease-in-out .5s;
+  transition: transform ease-in-out 0.5s;
 }
 
-
-.show-side-bar-area{
+.show-side-bar-area {
   z-index: 3001;
-  position:fixed;
+  position: fixed;
   top: 0px;
   left: 0px;
   font-size: 1.4em;
   color: white;
 
-  transition: opacity .5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   &.hidden {
     z-index: 0;
     opacity: 0;
   }
 
-  .button-text{
+  .button-text {
     display: none;
     //visibility: hidden;
   }
-  .show-hide-wordlist-btn{
+  .show-hide-wordlist-btn {
     background-color: transparent;
     padding: 5px 5px;
     margin: 5px 5px 5px 0;
@@ -48,16 +47,16 @@
     border-radius: 0 20px 20px 0;
   }
 }
-@media(min-width: 992px){
-  .show-side-bar-area{
+@media (min-width: 992px) {
+  .show-side-bar-area {
     font-size: 1em;
     top: 62px;
     left: unset;
-    .button-text{
+    .button-text {
       display: initial;
       //visibility: initial;
     }
-    .show-hide-wordlist-btn{
+    .show-hide-wordlist-btn {
       background-color: #dcdcdc;
       padding: 5px 5px;
       margin: 5px 5px 5px 0;
@@ -65,18 +64,17 @@
       border-radius: 0 20px 20px 0;
     }
   }
-
 }
 
-.option-area.hidden{
+.option-area.hidden {
   transform: translate(-100%);
 }
-.option-list{
+.option-list {
   height: calc(100vh - 70px);
   overflow-y: auto;
 }
 
-.option-list.no-content{
+.option-list.no-content {
   height: calc(100vh - 70px - 84px);
 }
 
@@ -91,15 +89,15 @@
   }
 }
 
-.option-list .option-list-item.mat-list-item{
+.option-list .option-list-item.mat-list-item {
   white-space: nowrap;
   overflow: hidden;
   height: 40px;
 }
 
-.option-list .option-list-item.mat-list-item.underlist-item{
+.option-list .option-list-item.mat-list-item.underlist-item {
   height: 25px;
-  text-align:right;
+  text-align: right;
   line-height: 0.8em;
   font-size: 0.8em;
   white-space: nowrap;
@@ -110,13 +108,12 @@
   }
 }
 
-
-.option-list .option-list-item.mat-list-item.underlist-item .label.align-right{
+.option-list .option-list-item.mat-list-item.underlist-item .label.align-right {
   padding-left: 0;
   padding-right: 25px;
 }
 
-.options-title{
+.options-title {
   text-align: center;
   padding: 15px;
 }
@@ -124,46 +121,49 @@
 .main-row {
   min-height: 99vh;
 }
-.offset-top{
+.offset-top {
   padding-top: 10px;
 }
 
 @include media-breakpoint-up(lg) {
-  .offset-top{
+  .offset-top {
     padding-top: 72px;
   }
 }
 
-::ng-deep .small-toggle-btn.mat-button-toggle.mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+::ng-deep
+  .small-toggle-btn.mat-button-toggle.mat-button-toggle-appearance-standard
+  .mat-button-toggle-label-content {
   /*line-height: unset;*/
   padding: 0 5px;
   line-height: 36px;
 }
 
-.show-hide-wordlist-btn{
+.show-hide-wordlist-btn {
   font-size: 1.1em;
   width: 100%;
   background-color: #dcdcdc;
   margin-bottom: 10px;
-  
+
   &.hidden {
     display: none;
   }
 }
-.show-hide-wordlist-btn .fa-chevron-left{
+.show-hide-wordlist-btn .fa-chevron-left {
   position: relative;
   top: -1px;
   font-size: 0.9em;
 }
 .animate-flex,
-.right-area{
+.right-area {
   transition-duration: 200ms;
   transition-delay: 1ms;
-  transition: width 0.5s, height 0.5s, max-width 0.5s, max-height 0.5s, flex 0.5s;
+  transition: width 0.5s, height 0.5s, max-width 0.5s, max-height 0.5s,
+    flex 0.5s;
   transition-timing-function: ease-in-out;
 }
 
-::ng-deep .mat-tooltip-top-fix{
+::ng-deep .mat-tooltip-top-fix {
   z-index: 2001;
 }
 
@@ -175,29 +175,29 @@
   }
 }
 
-
-.expand-btn{
+.expand-btn {
   color: white;
   position: absolute;
   padding: 0;
   border: 0;
-  transition: width .1s ease-in-out;
+  transition: width 0.1s ease-in-out;
   background-color: #ececeb;
   text-align: right;
 }
-.expand-btn .fa{
+.expand-btn .fa {
   font-size: 0.5em;
-  transition: font-size .1s ease-in-out, height .1s ease-in-out, width .1s ease-in-out;
+  transition: font-size 0.1s ease-in-out, height 0.1s ease-in-out,
+    width 0.1s ease-in-out;
 }
-.expand-btn:hover .fa{
+.expand-btn:hover .fa {
   font-size: 1em;
 }
 
-.expand-btn:focus{
+.expand-btn:focus {
   outline: 0;
 }
 
-.expand-left{
+.expand-left {
   cursor: pointer;
   top: 0;
   left: 100%; // align to right side
@@ -211,12 +211,11 @@
 
   i.fa {
     width: 1em;
-    transition: width .1s ease-in-out;
+    transition: width 0.1s ease-in-out;
   }
-
 }
 $size: 2rem;
-.expand-left:hover i.fa{
+.expand-left:hover i.fa {
   border: 0;
   background: #ececeb;
   color: white;

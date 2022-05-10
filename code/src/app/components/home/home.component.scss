@@ -1,25 +1,23 @@
-@import "~variables.scss";
+@import "./variables.scss";
 
-
-.welcome{
+.welcome {
   text-align: center;
 }
 
 .main-row {
   min-height: 99vh;
 }
-.app-container{
+.app-container {
   padding-top: 62px;
   height: 100%;
 }
-.offset-top{
+.offset-top {
   padding-top: 10px;
 }
 
-footer{
+footer {
   background-color: #cccccc;
 }
-
 
 .fancy-checkbox i {
   font-size: 1.2em;
@@ -40,26 +38,24 @@ footer{
   display: none;
 }
 
-.fancy-checkbox input[type="checkbox"]:checked ~ .checked
-{
+.fancy-checkbox input[type="checkbox"]:checked ~ .checked {
   display: inline-block;
 }
 
-.fancy-checkbox input[type="checkbox"]:checked ~ .unchecked
-{
+.fancy-checkbox input[type="checkbox"]:checked ~ .unchecked {
   display: none;
 }
-.tutorial{
+.tutorial {
   position: relative;
   min-height: 70px;
 
   .tutorial-text {
     position: absolute;
     color: #2a4aa3;
-    opacity: .5;
+    opacity: 0.5;
     //transition: opacity .5s ease-in-out;
     &:hover {
-      opacity: .8;
+      opacity: 0.8;
     }
 
     &.bottom {
@@ -87,20 +83,18 @@ footer{
   -moz-border-radius: 0 200px 0 0;
   -webkit-border-radius: 200px 0 0 0;
 
-
   //bottom: -10px;
 
-  &.left{
+  &.left {
     border-bottom: rgb(141, 166, 215) 1px solid;
     border-left: rgb(141, 166, 215) 1px solid;
 
     left: calc(50% - 223px);
     border-radius: 0 0 0 100px;
     top: -10px;
-
   }
 
-  &.right{
+  &.right {
     border-top: rgb(141, 166, 215) 1px solid;
     border-left: rgb(141, 166, 215) 1px solid;
 
@@ -120,15 +114,17 @@ footer{
   min-height: 275px;
   text-align: justify;
 
-  mat-card-actions{
+  mat-card-actions {
     position: absolute;
     bottom: 18px;
     right: 18px;
   }
-  a.hidden-link-overlay{
+  a.hidden-link-overlay {
     position: absolute;
-    top: 0; left: 0;
-    height: 100%; width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
   }
 
   &:hover {
@@ -136,9 +132,8 @@ footer{
     //            0 1px 1px 0 rgba(0,0,0,.14),
     //            0 1px 3px 0 rgba(0,0,0,.12)
 
-    box-shadow: 0 2px 5px 3px rgba(0,0,0,.2),
-                0 1px 1px 0 rgba(0,0,0,.14),
-                0 1px 3px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.2),
+      0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   }
 
   ::ng-deep .mat-card-header-text {
@@ -151,14 +146,13 @@ footer{
   text-align: center;
 }
 
-.main-page-icon-wrapper{
+.main-page-icon-wrapper {
   //width: 100%;
   text-align: center;
   font-size: 4em;
   //background-color: $primary-color;
-  color:$primary-color;
+  color: $primary-color;
   padding: 5px 0;
   width: calc(100% + 32px);
   margin: 0 -16px 16px -16px;
-
 }
