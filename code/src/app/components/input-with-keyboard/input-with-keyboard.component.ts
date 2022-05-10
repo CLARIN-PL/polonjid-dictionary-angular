@@ -113,13 +113,10 @@ export class InputWithKeyboardComponent implements OnInit {
         .pipe(
           takeUntil(this.trigger.autocomplete.opened))
         .subscribe(() => {
-         const panelClosedInterval = setInterval(() => {
-
            if (this.trigger.autocomplete.closed) {
              this.trigger.openPanel();
-             clearInterval(panelClosedInterval);
            }
-         }, 100);
+
       });
     }
   }
