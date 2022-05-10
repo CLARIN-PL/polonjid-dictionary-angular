@@ -88,7 +88,7 @@
 }
 
 ::ng-deep .mat-keyboard-wrapper {
-  background-color: rgba(lighten($primary-color, 15%), 10%) !important;
+  background-color: rgba(72, 107, 205, 0.9) !important;
 }
 
 /*keyboard mobile fix*/
@@ -203,3 +203,4 @@
   .mat-form-field-label {
   transform: translateY(-1em) scale(0.75) perspective(100px) translateZ(0.001px) !important;
 }
+
