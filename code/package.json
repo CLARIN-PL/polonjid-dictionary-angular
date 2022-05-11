@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start-docker": "sudo docker-compose down && ng build --configuration production && sudo docker-compose build && sudo docker-compose up -d"
+    "start-docker": "sudo docker compose down && ng build --configuration production && sudo docker compose build && sudo docker compose up -d"
   },
   "private": true,
   "dependencies": {
