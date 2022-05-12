@@ -1,4 +1,4 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 //@include mat-core();
 
 // overriding mat-colors
@@ -34,7 +34,7 @@ mat.$blue-palette: (
     A700: white,
   )
 );
-$primary: mat.define-palette(mat.$blue-palette,900);
+$primary: mat.define-palette(mat.$blue-palette, 900);
 $accent: mat.define-palette(mat.$pink-palette);
 $theme: mat.define-light-theme($primary, $accent);
 //@include angular-material-theme($theme);
@@ -42,4 +42,3 @@ $theme: mat.define-light-theme($primary, $accent);
 $background-color: #ccc;
 $gray-color: #676767;
 $primary-color: mat.get-color-from-palette($primary);
-

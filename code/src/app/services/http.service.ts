@@ -1,14 +1,11 @@
+import { of as observableOf, Observable } from "rxjs";
 
-import {of as observableOf, Observable} from 'rxjs';
+import { debounceTime } from "rxjs/operators";
+import { Injectable } from "@angular/core";
 
-import {debounceTime} from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-
-
-
-import {lemmas} from './avaliable_lemmas_temp';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../environments/environment';
+import { lemmas } from "./avaliable_lemmas_temp";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class HttpService {
@@ -18,12 +15,11 @@ export class HttpService {
 
   constructor(private http: HttpClient) {}
 
-
   private get(uri, base?: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Accept-Language': 'en',
-      })
+        "Accept-Language": "en",
+      }),
     };
 
     if (!base) {
@@ -35,25 +31,27 @@ export class HttpService {
   }
 
   getAbsolute(uri) {
-    return this.get('', uri);
+    return this.get("", uri);
   }
 
   getDictionaryItem(itemName, itemId) {
-    return this.get('dictionaries/' + itemName + '/' + (itemId ? itemId : ''));
+    return this.get("dictionaries/" + itemName + "/" + (itemId ? itemId : ""));
   }
 
   getSenseDetails(id) {
-    return this.get('senses/' + id);
+    return this.get("senses/" + id);
   }
 
-  getSearchOptions(form: String, page = 0, perPage= 50) {
-    let searchStr = 'senses/search?lexicon=4&domain=55&';
+  getSearchOptions(form: String, page = 0, perPage = 50) {
+    let searchStr = "senses/search?lexicon=4&domain=55&";
     for (const key in form) {
-      if (form[key] !== '' && form[key] !== undefined) {
-        searchStr += key + '=' + form[key] + '&';
+      if (form[key] !== "" && form[key] !== undefined) {
+        searchStr += key + "=" + form[key] + "&";
       }
     }
-    return this.get(searchStr + 'limit=' + perPage + '&start=' + page * perPage );
+    return this.get(
+      searchStr + "limit=" + perPage + "&start=" + page * perPage
+    );
   }
 
   getGlobalOptions(searchedKey) {
@@ -61,7 +59,7 @@ export class HttpService {
   }
 
   getSenseRelations(senseId) {
-    return this.get('senses/' + senseId + '/relations');
+    return this.get("senses/" + senseId + "/relations");
   }
 
   getSearchAutocomplete(term) {
@@ -70,28 +68,34 @@ export class HttpService {
       let somethingFound = false; // using this to optimize search function since lemmas are sorted,
 
       // true if searched term is yiddish
-      const yiddishTerm = (searchedTerm.search(/[\u0590-\u05FF]/) >= 0);
+      const yiddishTerm = searchedTerm.search(/[\u0590-\u05FF]/) >= 0;
 
       if (yiddishTerm) {
-        for (let i = 0; i < lemmas['yiddish'].length; i++) {
-          if (lemmas['yiddish'][i].startsWith(searchedTerm.toLowerCase())) {
-            found.push({'lemma': lemmas['yiddish'][i], 'spelling': 'Yiddish'});
+        for (let i = 0; i < lemmas["yiddish"].length; i++) {
+          if (lemmas["yiddish"][i].startsWith(searchedTerm.toLowerCase())) {
+            found.push({ lemma: lemmas["yiddish"][i], spelling: "Yiddish" });
             somethingFound = true;
-            if (found.length >= maxItemsToFind) { // check if list ready
+            if (found.length >= maxItemsToFind) {
+              // check if list ready
               return found;
             }
           }
         }
-      } else { // search if not yiddishTerm
+      } else {
+        // search if not yiddishTerm
 
-        for (let i = 0; i < lemmas['latinAndYivo'].length; i++) {
-          if (lemmas['latinAndYivo'][i][0].startsWith(searchedTerm.toLowerCase())) {
+        for (let i = 0; i < lemmas["latinAndYivo"].length; i++) {
+          if (
+            lemmas["latinAndYivo"][i][0].startsWith(searchedTerm.toLowerCase())
+          ) {
             found.push({
-              'lemma': lemmas['latinAndYivo'][i][0],
-              'spelling': (lemmas['latinAndYivo'][i][1] === 'y' ? 'Yivo' : 'Philological')
+              lemma: lemmas["latinAndYivo"][i][0],
+              spelling:
+                lemmas["latinAndYivo"][i][1] === "y" ? "Yivo" : "Philological",
             });
             somethingFound = true;
-            if (found.length >= maxItemsToFind) { // check if list ready
+            if (found.length >= maxItemsToFind) {
+              // check if list ready
               return found;
             }
           } else if (somethingFound) {
@@ -104,12 +108,11 @@ export class HttpService {
     return observableOf(getLemmas(term, 10)).pipe(debounceTime(750));
   }
   getLang(lang) {
-    const langPath = `assets/i18n/${lang || 'en'}.json`;
+    const langPath = `assets/i18n/${lang || "en"}.json`;
     return this.getAbsolute(langPath);
   }
 
   getYiddishDetails(senseId) {
-    return this.get('senses/' + senseId + '/yiddish');
+    return this.get("senses/" + senseId + "/yiddish");
   }
 }
-

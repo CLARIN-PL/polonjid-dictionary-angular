@@ -1,21 +1,20 @@
-import {Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
-import {SidebarService} from '../../services/sidebar.service';
-import {ActivatedRoute} from '@angular/router';
-import {CurrentStateService} from '../../services/current-state.service';
+import { Component, OnInit, ViewChild, OnDestroy } from "@angular/core";
+import { SidebarService } from "../../services/sidebar.service";
+import { ActivatedRoute } from "@angular/router";
+import { CurrentStateService } from "../../services/current-state.service";
 
 @Component({
-  selector: 'app-unit',
-  templateUrl: './unit.component.html',
-  styleUrls: ['./unit.component.scss']
+  selector: "app-unit",
+  templateUrl: "./unit.component.html",
+  styleUrls: ["./unit.component.scss"],
 })
 export class UnitComponent implements OnInit, OnDestroy {
-
-  @ViewChild('sidebar') sidebarRef;
+  @ViewChild("sidebar") sidebarRef;
   sidebarObsv;
   sidebarLoadingObsv;
   sideBarListStyleListener;
   sidebarContent = [];
-  sideBarListStyle = 'yivo';
+  sideBarListStyle = "yivo";
   sideBarListLoading = false;
   recordsInfo = null;
 
@@ -24,34 +23,41 @@ export class UnitComponent implements OnInit, OnDestroy {
 
   mobile = false; // mobile state - obtained only once at init
 
-  constructor(private sidebarService: SidebarService, private state: CurrentStateService) {}
+  constructor(
+    private sidebarService: SidebarService,
+    private state: CurrentStateService
+  ) {}
 
   ngOnInit() {
     this.sidebarService.init(this.sidebarRef);
     this.sidebarContent = this.sidebarService.getList();
 
-    this.sidebarObsv = this.sidebarService.getListObservable()
-      .subscribe(data => {
+    this.sidebarObsv = this.sidebarService
+      .getListObservable()
+      .subscribe((data) => {
         this.sidebarContent = data;
       });
 
     this.showingSideBar = this.state.getSidebarRearchResultsPanelOpen();
-    this.sidebarOpenListener = this.state.getSidebarRearchResultsPanelOpenEmitter().subscribe(
-      (state) => {
+    this.sidebarOpenListener = this.state
+      .getSidebarRearchResultsPanelOpenEmitter()
+      .subscribe((state) => {
         this.showingSideBar = state;
-      }
-    );
+      });
 
-    this.sideBarListStyleListener = this.state.getListAlphabetStyleEmitter().subscribe(state => {
-      this.sideBarListStyle = state;
-    });
+    this.sideBarListStyleListener = this.state
+      .getListAlphabetStyleEmitter()
+      .subscribe((state) => {
+        this.sideBarListStyle = state;
+      });
 
     this.mobile = this.state.getMobileState();
 
     // timeout to deal with racing condition (angular error)
     setTimeout(() => {
-      this.sidebarLoadingObsv = this.sidebarService.getListLoadinObservable()
-        .subscribe(data => {
+      this.sidebarLoadingObsv = this.sidebarService
+        .getListLoadinObservable()
+        .subscribe((data) => {
           this.sideBarListLoading = data.loading;
           this.recordsInfo = data.recordsStr;
         });

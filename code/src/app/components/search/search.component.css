@@ -1,13 +1,13 @@
 form > * {
   width: 100%;
 }
-.vertical-padding{
+.vertical-padding {
   padding: 0 10px;
 }
 
-.selector-label{
-  color: rgba(0,0,0,.42);
+.selector-label {
+  color: rgba(0, 0, 0, 0.42);
 }
-::ng-deep .mat-form-field-infix{
+::ng-deep .mat-form-field-infix {
   width: 165px;
 }

@@ -1,7 +1,9 @@
 <!--<form #f="ngForm" (ngSubmit)="onSearch(f.value)">-->
 <form [formGroup]="searchFormGroup" (ngSubmit)="onSearch()">
-
-  <label class="fancy-checkbox" [matTooltip]="'advanced_options_tooltip' | translate">
+  <label
+    class="fancy-checkbox"
+    [matTooltip]="'advanced_options_tooltip' | translate"
+  >
     <input
       class="ignore-btn-outside-click"
       name="showAdvancedOptions"
@@ -12,8 +14,12 @@
     />
     <i class="ignore-btn-outside-click fa fa-fw fa-cogs unchecked"></i>
     <i class="ignore-btn-outside-click fa fa-fw fa-cogs checked"></i>
-    <i class="ignore-btn-outside-click fa fa-fw fa-chevron-down unchecked chevron-rotate"></i>
-    <i class="ignore-btn-outside-click fa fa-fw fa-chevron-up checked chevron-rotate"></i>
+    <i
+      class="ignore-btn-outside-click fa fa-fw fa-chevron-down unchecked chevron-rotate"
+    ></i>
+    <i
+      class="ignore-btn-outside-click fa fa-fw fa-chevron-up checked chevron-rotate"
+    ></i>
   </label>
 
   <label class="fancy-checkbox" [matTooltip]="'keyboard_tooltip' | translate">
@@ -22,36 +28,64 @@
       type="checkbox"
       [checked]="searchFormGroup.value.useKeyboard"
       (click)="showKeyboardSelectorClicked(!searchFormGroup.value.useKeyboard)"
-      />
+    />
     <i class="fa fa-fw fa-keyboard unchecked"></i>
     <i class="fa fa-fw fa-keyboard checked"></i>
   </label>
 
   <mat-form-field class="long-width-input main-search-field">
-    <input autocomplete="off" *ngIf="!searchFormGroup.value.useKeyboard"  matInput formControlName="searchTerm" [matAutocomplete]="auto" [placeholder]="'search_placeholder' | translate " name="lemma">
-    <input autocomplete="off" [hidden]="!searchFormGroup.value.useKeyboard" #inputWithKeyboard matInput  formControlName="searchTerm" (ngModelChange)="modelChanged()" (blur)="inputBlured()" [matAutocomplete]="auto" [matKeyboard]="'yiddish_alphabetical_order'" [placeholder]="'search_placeholder' | translate " name="lemma">
+    <input
+      autocomplete="off"
+      *ngIf="!searchFormGroup.value.useKeyboard"
+      matInput
+      formControlName="searchTerm"
+      [matAutocomplete]="auto"
+      [placeholder]="'search_placeholder' | translate"
+      name="lemma"
+    />
+    <input
+      autocomplete="off"
+      [hidden]="!searchFormGroup.value.useKeyboard"
+      #inputWithKeyboard
+      matInput
+      formControlName="searchTerm"
+      (ngModelChange)="modelChanged()"
+      (blur)="inputBlured()"
+      [matAutocomplete]="auto"
+      [matKeyboard]="'yiddish_alphabetical_order'"
+      [placeholder]="'search_placeholder' | translate"
+      name="lemma"
+    />
     <!--<input autocomplete="off" #inputWithKeyboard matInput  formControlName="searchTerm" [matAutocomplete]="auto" [matKeyboard]="'yiddish_alphabetical_order'" [placeholder]="'search_placeholder' | translate " name="lemma">-->
 
     <!-- CREATE AUTO COMPLETE PANEL WITH OPTIONS. -->
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="optionSelected($event)">
-      <mat-option *ngFor="let opt of autoCompleteOptions | async" [value]="opt.lemma">
-        <span class="autocomplete-option-main">{{opt.lemma}}</span>
-        <small class="autocomplete-option-small">spelling: {{opt.spelling}}</small>
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="optionSelected($event)"
+    >
+      <mat-option
+        *ngFor="let opt of autoCompleteOptions | async"
+        [value]="opt.lemma"
+      >
+        <span class="autocomplete-option-main">{{ opt.lemma }}</span>
+        <small class="autocomplete-option-small"
+          >spelling: {{ opt.spelling }}</small
+        >
       </mat-option>
     </mat-autocomplete>
-
   </mat-form-field>
 
-
-  <button type="submit" mat-raised-button color="primary"><i class="fa fa-search"></i> {{ 'search' | translate}}</button>
+  <button type="submit" mat-raised-button color="primary">
+    <i class="fa fa-search"></i> {{ "search" | translate }}
+  </button>
 </form>
 
-
-<mat-expansion-panel #panel
-                     class="advanced-search-panel"
-                     [ngClass]="{'floating': floatingAdvancedSearchPanel}"
-                     (clickOutside)="onClickedOutsideAdvancedSearchPanel($event)"
-                     [delayClickOutsideInit]="true">
+<mat-expansion-panel
+  #panel
+  class="advanced-search-panel"
+  [ngClass]="{ floating: floatingAdvancedSearchPanel }"
+  (clickOutside)="onClickedOutsideAdvancedSearchPanel($event)"
+  [delayClickOutsideInit]="true"
+>
   <app-search #advancedFilters></app-search>
 </mat-expansion-panel>
-

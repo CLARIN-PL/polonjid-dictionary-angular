@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   // apiUrl: 'http://156.17.135.55:9070/wordnetloom-server/resources/'
-  apiUrl: 'https://polonjid-api.clarin-pl.eu/wordnetloom-server/resources/'
+  apiUrl: "https://polonjid-api.clarin-pl.eu/wordnetloom-server/resources/",
 };

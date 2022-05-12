@@ -1,25 +1,32 @@
-import { Injectable } from '@angular/core';
-import { HttpEvent, HttpRequest, HttpResponse, HttpInterceptor, HttpHandler } from '@angular/common/http';
-import {of as observableOf, Observable} from 'rxjs';
-import {  tap } from 'rxjs/operators';
-import {RequestCacheService} from '../services/request-cache.service';
-import { LoadingBarService } from '@ngx-loading-bar/core';
-
+import { Injectable } from "@angular/core";
+import {
+  HttpEvent,
+  HttpRequest,
+  HttpResponse,
+  HttpInterceptor,
+  HttpHandler,
+} from "@angular/common/http";
+import { of as observableOf, Observable } from "rxjs";
+import { tap } from "rxjs/operators";
+import { RequestCacheService } from "../services/request-cache.service";
+import { LoadingBarService } from "@ngx-loading-bar/core";
 
 @Injectable()
 export class CachingInterceptor implements HttpInterceptor {
-  constructor(private cache: RequestCacheService,
-              private loadingBar: LoadingBarService) {}
+  constructor(
+    private cache: RequestCacheService,
+    private loadingBar: LoadingBarService
+  ) {}
 
   // graph should be cached elsewhere
-  notCacheableURIs = ['/graph'];
+  notCacheableURIs = ["/graph"];
 
   private isRequestCacheable(req: HttpRequest<any>) {
-    if (req.method !== 'GET') {
+    if (req.method !== "GET") {
       return false;
     }
 
-    this.notCacheableURIs.forEach(nonCachableURI => {
+    this.notCacheableURIs.forEach((nonCachableURI) => {
       if (req.url.indexOf(nonCachableURI) > -1) {
         return false;
       }
@@ -28,7 +35,10 @@ export class CachingInterceptor implements HttpInterceptor {
     return true;
   }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     const cachedResponse: HttpEvent<any> = this.cache.get(req);
 
     this.loadingBar.start();
@@ -54,10 +64,10 @@ export class CachingInterceptor implements HttpInterceptor {
   sendRequest(
     req: HttpRequest<any>,
     next: HttpHandler,
-    cache: RequestCacheService): Observable<HttpEvent<any>> {
-
+    cache: RequestCacheService
+  ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      tap(event => {
+      tap((event) => {
         if (event instanceof HttpResponse) {
           cache.put(req, event);
         }

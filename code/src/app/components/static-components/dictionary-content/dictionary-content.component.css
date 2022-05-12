@@ -1,13 +1,13 @@
-.app-container{
+.app-container {
   padding-top: 119px;
   height: 100%;
 }
-.offset-top{
+.offset-top {
   padding-top: 10px;
 }
-.no-padding{
+.no-padding {
   padding: 0;
 }
-.content-container{
+.content-container {
   text-align: justify;
 }

@@ -3,15 +3,34 @@
 <div class="container-fluid app-container">
   <div class="row">
     <div class="col-12">
-
       <div class="row">
-        <div class="show-side-bar-area" [ngClass]="{'hidden': !mobile }">
-          <button [ngClass]="{'hidden': showingSideBar }" mat-button class="show-hide-wordlist-btn"  (click)="showSideBar()" ><i class="fa fa-fw fa-list"></i><i class="fa fa-fw fa-angle-right"></i></button>
-          <button [ngClass]="{'hidden': !showingSideBar }" mat-button class="show-hide-wordlist-btn"  (click)="hideSideBar()"><i class="fa fa-fw fa-angle-left"></i><i class="fa fa-fw fa-list"></i></button>
+        <div class="show-side-bar-area" [ngClass]="{ hidden: !mobile }">
+          <button
+            [ngClass]="{ hidden: showingSideBar }"
+            mat-button
+            class="show-hide-wordlist-btn"
+            (click)="showSideBar()"
+          >
+            <i class="fa fa-fw fa-list"></i
+            ><i class="fa fa-fw fa-angle-right"></i>
+          </button>
+          <button
+            [ngClass]="{ hidden: !showingSideBar }"
+            mat-button
+            class="show-hide-wordlist-btn"
+            (click)="hideSideBar()"
+          >
+            <i class="fa fa-fw fa-angle-left"></i
+            ><i class="fa fa-fw fa-list"></i>
+          </button>
         </div>
 
         <!--SIDE BAR-->
-        <div class="col-12 col-md-4 col-lg-3 col-xl-2 option-area" [ngClass]="{'hidden': !showingSideBar}"> <!-- position set as fixed -->
+        <div
+          class="col-12 col-md-4 col-lg-3 col-xl-2 option-area"
+          [ngClass]="{ hidden: !showingSideBar }"
+        >
+          <!-- position set as fixed -->
 
           <div [hidden]="sidebarContent.length < 1" class="options-title">
             <h4>Wordlist:</h4>
@@ -19,78 +38,129 @@
             <mat-button-toggle-group
               [value]="sideBarListStyle"
               (change)="onSelectedListStyleChange($event)"
-              class="button-toggle-selector-names-style" name="fontStyle" aria-label="Font Style">
-              <mat-button-toggle class="small-toggle-btn" [checked]="true" value="yivo">YIVO</mat-button-toggle>
-              <mat-button-toggle class="small-toggle-btn" value="yiddish">Yiddish</mat-button-toggle>
-              <mat-button-toggle class="small-toggle-btn" value="latin">Philological</mat-button-toggle>
-            </mat-button-toggle-group>
-
-          </div>
-          <mat-nav-list #sidebarList class="option-list" [ngClass]="(sidebarContent.length < 1)?'':'no-content'" (appScrollBottom)="optionListScrollBottom($event)">
-            <div class="no-gutters" *ngFor="let item of sidebarContent">
-              <a  *ngIf="!item.variants || item.variants.length === 0"
-                 mat-list-item
-                 class="option-list-item"
-                 (click)="optionSelected()"
-                 [routerLink]="[item.id]"
-                 routerLinkActive="active-link"
-
-                 matTooltip="{{item.label.length > 23 ? item.label : '' }}"
-                 [matTooltipPosition]="'right'"
-                 [matTooltipClass]="'mat-tooltip-top-fix'"
+              class="button-toggle-selector-names-style"
+              name="fontStyle"
+              aria-label="Font Style"
+            >
+              <mat-button-toggle
+                class="small-toggle-btn"
+                [checked]="true"
+                value="yivo"
+                >YIVO</mat-button-toggle
               >
-                {{ item.label}}
+              <mat-button-toggle class="small-toggle-btn" value="yiddish"
+                >Yiddish</mat-button-toggle
+              >
+              <mat-button-toggle class="small-toggle-btn" value="latin"
+                >Philological</mat-button-toggle
+              >
+            </mat-button-toggle-group>
+          </div>
+          <mat-nav-list
+            #sidebarList
+            class="option-list"
+            [ngClass]="sidebarContent.length < 1 ? '' : 'no-content'"
+            (appScrollBottom)="optionListScrollBottom($event)"
+          >
+            <div class="no-gutters" *ngFor="let item of sidebarContent">
+              <a
+                *ngIf="!item.variants || item.variants.length === 0"
+                mat-list-item
+                class="option-list-item"
+                (click)="optionSelected()"
+                [routerLink]="[item.id]"
+                routerLinkActive="active-link"
+                matTooltip="{{ item.label.length > 23 ? item.label : '' }}"
+                [matTooltipPosition]="'right'"
+                [matTooltipClass]="'mat-tooltip-top-fix'"
+              >
+                {{ item.label }}
               </a>
 
-              <a *ngFor="let variant of item.variants | yiddishPrimaryFirst" mat-list-item
-                 class="option-list-item"
-                 [ngClass]="{'underlist-item': variant.variant_type !== 'Yiddish_Primary_Lemma'}"
-                 routerLinkActive="active-link"
-                 matTooltip="{{item.label.length > 23 ? item.label + item.variant : '' }}"
-                 (click)="optionSelected()"
-                 [routerLink]="[item.id]"
-                 [queryParams]="{variant: variant.id}"
-                 [matTooltipPosition]="'right'"
-                 [matTooltipClass]="'mat-tooltip-top-fix'">
-                 <span class="label" [ngClass]="{'align-right': sideBarListStyle === 'yiddish'}">
-                   <span *ngIf="variant.variant_type !== 'Yiddish_Primary_Lemma' && sideBarListStyle === 'yiddish'">({{variant.variant_type}})&#160;</span>
-                   <span>{{variant[sideBarListStyle]}}</span>
-                   <span *ngIf="variant.variant_type !== 'Yiddish_Primary_Lemma' && sideBarListStyle !== 'yiddish'">&#160;({{variant.variant_type}})</span>
-                   <span *ngIf="variant.variant_type === 'Yiddish_Primary_Lemma'">&#160;{{item.variant}}</span>
-                 </span>
+              <a
+                *ngFor="let variant of item.variants | yiddishPrimaryFirst"
+                mat-list-item
+                class="option-list-item"
+                [ngClass]="{
+                  'underlist-item':
+                    variant.variant_type !== 'Yiddish_Primary_Lemma'
+                }"
+                routerLinkActive="active-link"
+                matTooltip="{{
+                  item.label.length > 23 ? item.label + item.variant : ''
+                }}"
+                (click)="optionSelected()"
+                [routerLink]="[item.id]"
+                [queryParams]="{ variant: variant.id }"
+                [matTooltipPosition]="'right'"
+                [matTooltipClass]="'mat-tooltip-top-fix'"
+              >
+                <span
+                  class="label"
+                  [ngClass]="{ 'align-right': sideBarListStyle === 'yiddish' }"
+                >
+                  <span
+                    *ngIf="
+                      variant.variant_type !== 'Yiddish_Primary_Lemma' &&
+                      sideBarListStyle === 'yiddish'
+                    "
+                    >({{ variant.variant_type }})&#160;</span
+                  >
+                  <span>{{ variant[sideBarListStyle] }}</span>
+                  <span
+                    *ngIf="
+                      variant.variant_type !== 'Yiddish_Primary_Lemma' &&
+                      sideBarListStyle !== 'yiddish'
+                    "
+                    >&#160;({{ variant.variant_type }})</span
+                  >
+                  <span *ngIf="variant.variant_type === 'Yiddish_Primary_Lemma'"
+                    >&#160;{{ item.variant }}</span
+                  >
+                </span>
               </a>
 
               <!--<a *ngFor="let temp of ['Yiddish Primary Lemma', 'Philological', 'Morphological']" mat-list-item-->
-                 <!--class="option-list-item underlist-item"-->
-                 <!--routerLinkActive="active-link"-->
-                 <!--matTooltip="{{item.label.length > 23 ? item.label : '' }}"-->
-                 <!--[matTooltipPosition]="'right'"-->
-                 <!--[matTooltipClass]="'mat-tooltip-top-fix'">-->
-                <!--{{temp}}-->
+              <!--class="option-list-item underlist-item"-->
+              <!--routerLinkActive="active-link"-->
+              <!--matTooltip="{{item.label.length > 23 ? item.label : '' }}"-->
+              <!--[matTooltipPosition]="'right'"-->
+              <!--[matTooltipClass]="'mat-tooltip-top-fix'">-->
+              <!--{{temp}}-->
               <!--</a>-->
               <mat-divider></mat-divider>
             </div>
 
-
-            <a [hidden]="!sideBarListLoading" mat-list-item class="option-list-item loading-option-list">
+            <a
+              [hidden]="!sideBarListLoading"
+              mat-list-item
+              class="option-list-item loading-option-list"
+            >
               <mat-spinner diameter="30" strokeWidth="3"></mat-spinner>
             </a>
           </mat-nav-list>
 
-          <button *ngIf="!mobile" class="expand-btn expand-left" (click)=" toggleSidebarShowing() ">
-            <i *ngIf="showingSideBar" class="fa fa-chevron-left" ></i>
+          <button
+            *ngIf="!mobile"
+            class="expand-btn expand-left"
+            (click)="toggleSidebarShowing()"
+          >
+            <i *ngIf="showingSideBar" class="fa fa-chevron-left"></i>
             <i *ngIf="!showingSideBar" class="fa fa-chevron-right"></i>
           </button>
-
         </div>
-
 
         <!--SIDE BAR END-->
 
-        <div class="col-12 right-area offset-top" [ngClass]="{'col-md-8 offset-md-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2': showingSideBar}">
+        <div
+          class="col-12 right-area offset-top"
+          [ngClass]="{
+            'col-md-8 offset-md-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2':
+              showingSideBar
+          }"
+        >
           <app-right-area></app-right-area>
         </div>
-
       </div>
     </div>
   </div>

@@ -1,12 +1,10 @@
-import {QueryNames} from './querynames';
-import {SenseContent} from './sensecontent';
-import {HttpService} from '../../../services/http.service';
+import { QueryNames } from "./querynames";
+import { SenseContent } from "./sensecontent";
+import { HttpService } from "../../../services/http.service";
 
 export class YiddishContent {
-
   id: number;
   yiddishId: number;
-
 
   lemma: string;
   differentAlphabetLemmas: {};
@@ -21,20 +19,27 @@ export class YiddishContent {
 
   areas: Array<Object> = [];
   variant_type: String;
-  yiddishVariant = 'Default';
+  yiddishVariant = "Default";
   additionalFields = {};
 
   // http not initialized automatically, needs to be passed
-  constructor(json: Object, parentSense: SenseContent, dictionarySettings: {}, private http: HttpService) {
-    this.id = json['id'];
-    this.yiddishId = json['id'];
-    this.variant_type = json['variant_type'];
+  constructor(
+    json: Object,
+    parentSense: SenseContent,
+    dictionarySettings: {},
+    private http: HttpService
+  ) {
+    this.id = json["id"];
+    this.yiddishId = json["id"];
+    this.variant_type = json["variant_type"];
     this.differentAlphabetLemmas = {
-      'latin': json['latin_spelling'],
-      'yivo': json['yivo_spelling'],
-      'yiddish': json['yiddish_spelling'],
+      latin: json["latin_spelling"],
+      yivo: json["yivo_spelling"],
+      yiddish: json["yiddish_spelling"],
     };
-    this.yiddishVariant = json['variant_type'].replace('Yiddish_', '').replace(/_/g, ' ');
+    this.yiddishVariant = json["variant_type"]
+      .replace("Yiddish_", "")
+      .replace(/_/g, " ");
 
     this.variant = parentSense.variant;
     this.partOfSpeechId = parentSense.partOfSpeechId;
@@ -44,28 +49,37 @@ export class YiddishContent {
     this.yiddishVariantId = 0;
     const domainName = parentSense.domain;
 
-    this.lemma = json['latin_spelling'] +  ' ' + this.variant + ' (' + domainName + ')'
-      + ' | ' + json['yiddish_spelling'] + ' | ' +  json['yivo_spelling'];
+    this.lemma =
+      json["latin_spelling"] +
+      " " +
+      this.variant +
+      " (" +
+      domainName +
+      ")" +
+      " | " +
+      json["yiddish_spelling"] +
+      " | " +
+      json["yivo_spelling"];
 
-    this.grammaticalGender = '';
-    if (json['grammatical_gender']) {
-      this.grammaticalGender = json['grammatical_gender'].name;
+    this.grammaticalGender = "";
+    if (json["grammatical_gender"]) {
+      this.grammaticalGender = json["grammatical_gender"].name;
     }
 
     this.setYiddishFields(json);
 
     this.additionalFields = {
-      'context': json['context'],
-      'comment': json['comment']
+      context: json["context"],
+      comment: json["comment"],
     };
   }
 
   private static sortParticles(it0, it1) {
     const values = {
-      'prefix': 0,
-      'root': 5,
-      'constituent': 7,
-      'suffix': 10
+      prefix: 0,
+      root: 5,
+      constituent: 7,
+      suffix: 10,
     };
     return values[it0.type] - values[it1.type];
   }
@@ -77,7 +91,7 @@ export class YiddishContent {
   private assignTooltipForParticle(element) {
     const self = this;
 
-    if (element.type === 'root' || element.type === 'constituent') {
+    if (element.type === "root" || element.type === "constituent") {
       return (resolve, reject) => {
         resolve(YiddishContent.capitalizeFirstLetter(element.type));
       };
@@ -87,13 +101,17 @@ export class YiddishContent {
       self.http
         .getDictionaryItem(`${element.type}es`, element.id)
         .toPromise()
-        .then(data => {
-          resolve(YiddishContent.capitalizeFirstLetter(element.type) + ' | ' + data.description);
+        .then((data) => {
+          resolve(
+            YiddishContent.capitalizeFirstLetter(element.type) +
+              " | " +
+              data.description
+          );
         });
     };
   }
 
-  private getSearchFieldQuery(name: string, id: number|string) {
+  private getSearchFieldQuery(name: string, id: number | string) {
     return QueryNames.getQueryString(name, id);
   }
 
@@ -101,33 +119,38 @@ export class YiddishContent {
     const self = this;
 
     const fieldNames = {
-      'latin_spelling': {viewName: 'Philological spelling', type: 'simple'},
-      'yiddish_spelling': {viewName: 'Yiddish spelling', type: 'simple'},
-      'yivo_spelling': {viewName: 'YIVO spelling', type: 'simple'},
-      'part_of_speech': {viewName: 'Part of speech', type: 'inherited'},
-      'grammatical_gender': {viewName: 'Grammatical qualifiers', type: 'object'},
-      'inflections': {viewName: 'Inflection', type: 'array'},
-      'meaning': {viewName: 'Meaning', type: 'simple'},
-      'semantic_fields': {viewName: 'Semantic field', type: 'array'},
-      'style': {viewName: 'Style', type: 'object'},
-      'lexical_characteristic': {viewName: 'Lexical Characteristic', type: 'object'},
-      'status': {viewName: 'Rootedness', type: 'object'},
-      'etymology': {viewName: 'Etymology', type: 'simple'},
-      'age': {viewName: 'Age', type: 'object'},
-      'sources': {viewName: 'Sources', type: 'array'},
-      'etymological_root': {viewName: 'Etymological Root', type: 'simple'},
-      'particles': {viewName: 'Morphology', type: 'array', separator: ' | '},
-      'transcriptions': {viewName: 'Phonetic transcription', type: 'array'}
+      latin_spelling: { viewName: "Philological spelling", type: "simple" },
+      yiddish_spelling: { viewName: "Yiddish spelling", type: "simple" },
+      yivo_spelling: { viewName: "YIVO spelling", type: "simple" },
+      part_of_speech: { viewName: "Part of speech", type: "inherited" },
+      grammatical_gender: {
+        viewName: "Grammatical qualifiers",
+        type: "object",
+      },
+      inflections: { viewName: "Inflection", type: "array" },
+      meaning: { viewName: "Meaning", type: "simple" },
+      semantic_fields: { viewName: "Semantic field", type: "array" },
+      style: { viewName: "Style", type: "object" },
+      lexical_characteristic: {
+        viewName: "Lexical Characteristic",
+        type: "object",
+      },
+      status: { viewName: "Rootedness", type: "object" },
+      etymology: { viewName: "Etymology", type: "simple" },
+      age: { viewName: "Age", type: "object" },
+      sources: { viewName: "Sources", type: "array" },
+      etymological_root: { viewName: "Etymological Root", type: "simple" },
+      particles: { viewName: "Morphology", type: "array", separator: " | " },
+      transcriptions: { viewName: "Phonetic transcription", type: "array" },
     };
 
     const fields = [];
     for (const key in fieldNames) {
       let newField;
 
-      if (fieldNames[key].type === 'simple') {
-
+      if (fieldNames[key].type === "simple") {
         if (!jsonData[key]) {
-          console.log(key, 'missing');
+          console.log(key, "missing");
           continue;
         }
 
@@ -136,96 +159,128 @@ export class YiddishContent {
           values: [
             {
               name: jsonData[key],
-              searchQuery: this.getSearchFieldQuery(key, jsonData[key])
-            }]};
-      } else if (fieldNames[key].type === 'inherited' && key === 'part_of_speech') {
+              searchQuery: this.getSearchFieldQuery(key, jsonData[key]),
+            },
+          ],
+        };
+      } else if (
+        fieldNames[key].type === "inherited" &&
+        key === "part_of_speech"
+      ) {
         newField = {
           name: fieldNames[key].viewName,
           values: [
             {
               name: this.partOfSpeech,
-              searchQuery: this.getSearchFieldQuery(key, this.partOfSpeechId)
-            }]};
-      } else if (fieldNames[key].type === 'object') {
-
-          let values = [];
-          if (jsonData[key]) {
-            values = [{
+              searchQuery: this.getSearchFieldQuery(key, this.partOfSpeechId),
+            },
+          ],
+        };
+      } else if (fieldNames[key].type === "object") {
+        let values = [];
+        if (jsonData[key]) {
+          values = [
+            {
               name: jsonData[key].name,
-              searchQuery:  self.getSearchFieldQuery(key, jsonData[key].id)
-            }];
-          }
+              searchQuery: self.getSearchFieldQuery(key, jsonData[key].id),
+            },
+          ];
+        }
 
+        newField = {
+          name: fieldNames[key].viewName,
+          values: values,
+        };
+      } else if (fieldNames[key].type === "array") {
+        if (key === "inflections" && jsonData["inflections"].length > 0) {
           newField = {
             name: fieldNames[key].viewName,
-            values: values
+            values: jsonData["inflections"].map(function (it) {
+              return {
+                name: it.name + " " + it.text,
+                searchQuery: self.getSearchFieldQuery("Inflection", it.id),
+              };
+            }),
           };
-
-        } else if (fieldNames[key].type === 'array') {
-          if (key === 'inflections' && jsonData['inflections'].length > 0) {
-            newField = {
-              name: fieldNames[key].viewName,
-              values: jsonData['inflections'].map(function (it) {
-                return {name: it.name + ' ' + it.text,
-                  searchQuery: self.getSearchFieldQuery('Inflection', it.id)
-                };
-              })
-            };
-          } else if (key === 'transcriptions' && jsonData['transcriptions'].length > 0) {
-            newField = {
-              name: fieldNames[key].viewName,
-              values: jsonData['transcriptions'].map(function (it) {
+        } else if (
+          key === "transcriptions" &&
+          jsonData["transcriptions"].length > 0
+        ) {
+          newField = {
+            name: fieldNames[key].viewName,
+            values: jsonData["transcriptions"].map(function (it) {
+              return {
+                name: it.phonography,
+                searchQuery: self.getSearchFieldQuery("transcriptions", it.id),
+              };
+            }),
+          };
+        } else if (
+          key === "semantic_fields" &&
+          jsonData["semantic_fields"].length > 0
+        ) {
+          newField = {
+            name: fieldNames[key].viewName,
+            innerSeparator: " ",
+            values: jsonData[key].map(function (it) {
+              let ret = [
+                {
+                  name: it["domain"].name,
+                  searchQuery: self.getSearchFieldQuery(key, it["domain"].id),
+                },
+              ];
+              if (it["modifier"]) {
+                ret.push({
+                  name: "(" + it["modifier"].name + ")",
+                  searchQuery: self.getSearchFieldQuery(
+                    "semantic_fields_modifier",
+                    it["modifier"].id
+                  ),
+                });
+              }
+              return ret;
+            }),
+          };
+        } else if (key === "particles" && jsonData["particles"].length > 0) {
+          newField = {
+            name: fieldNames[key].viewName,
+            values: jsonData[key]
+              // .sort(YiddishContent.sortParticles) // sort particles
+              .map(function (it) {
                 return {
-                  name: it.phonography,
-                  searchQuery: self.getSearchFieldQuery('transcriptions', it.id)
+                  name: it.value,
+                  tooltip: new Promise<string>(
+                    self.assignTooltipForParticle(it)
+                  ),
+                  searchQuery: self.getSearchFieldQuery(
+                    "particle_" + it.type,
+                    it.id ? it.id : it.value
+                  ),
                 };
-              })
-            };
-          } else if (key === 'semantic_fields' && jsonData['semantic_fields'].length > 0) {
-            newField = {
-              name: fieldNames[key].viewName,
-              innerSeparator: ' ',
-              values: jsonData[key].map(function (it) {
-
-                let ret = [
-                  {name: it['domain'].name, searchQuery: self.getSearchFieldQuery(key, it['domain'].id)},
-                ];
-                if(it['modifier']) {
-                  ret.push({
-                    name: '(' + it['modifier'].name + ')',
-                    searchQuery: self.getSearchFieldQuery('semantic_fields_modifier', it['modifier'].id)
-                  });
-                }
-                return ret;
-              })
-            };
-          } else if (key === 'particles' && jsonData['particles'].length > 0) {
-            newField = {
-              name: fieldNames[key].viewName, values: jsonData[key]
-                // .sort(YiddishContent.sortParticles) // sort particles
-                .map(function (it) {
-                  return {
-                    name: it.value,
-                    tooltip: new Promise<string>(self.assignTooltipForParticle(it)),
-                    searchQuery: self.getSearchFieldQuery('particle_' + it.type, it.id ? it.id : it.value)
-                  };
-              })
-            };
-          } else {
-            newField = {
-              name: fieldNames[key].viewName, values: jsonData[key].map(function (it) {
-                return {
-                  name: it.name,
-                  searchQuery: self.getSearchFieldQuery(key, it.id)
-                };
-              })
-            };
-          }
+              }),
+          };
+        } else {
+          newField = {
+            name: fieldNames[key].viewName,
+            values: jsonData[key].map(function (it) {
+              return {
+                name: it.name,
+                searchQuery: self.getSearchFieldQuery(key, it.id),
+              };
+            }),
+          };
+        }
       }
 
       // don't show [Grammatical qualifiers, Inflection, Lexical Characteristic, Synonyms, Context, Comment] if it's empty
-      if (newField.values.length === 0 &&
-        ['Grammatical qualifiers', 'Inflection', 'Lexical Characteristic'].indexOf(newField.name) > -1) {
+      if (
+        newField.values.length === 0 &&
+        [
+          "Grammatical qualifiers",
+          "Inflection",
+          "Lexical Characteristic",
+        ].indexOf(newField.name) > -1
+      ) {
         continue;
       }
 
@@ -233,6 +288,6 @@ export class YiddishContent {
       fields.push(newField);
     }
 
-    this.areas.push({name: 'Yiddish specific', fields: fields});
+    this.areas.push({ name: "Yiddish specific", fields: fields });
   }
 }

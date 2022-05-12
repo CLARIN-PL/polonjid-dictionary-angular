@@ -1,17 +1,16 @@
-import {EventEmitter, Injectable} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { EventEmitter, Injectable } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Injectable()
 export class CurrentStateService {
-
   private mobileStateBreakPoint = 768;
   private state = {
-    senseId:                       {value: null, persistent: false},
-    navbarOpenState:               {value: false, persistent: false},
-    sidebarSearchResultsPanelOpen: {value: true, persistent: true},
-    rightDetailPanelOpen:          {value: true, persistent: true},
-    mobileState:                   {value: true, persistent: false},
-    listAlphabetStyle:             {value: 'yivo', persistent: true}
+    senseId: { value: null, persistent: false },
+    navbarOpenState: { value: false, persistent: false },
+    sidebarSearchResultsPanelOpen: { value: true, persistent: true },
+    rightDetailPanelOpen: { value: true, persistent: true },
+    mobileState: { value: true, persistent: false },
+    listAlphabetStyle: { value: "yivo", persistent: true },
   };
 
   private senseIdEmitter = new EventEmitter<any>();
@@ -24,19 +23,23 @@ export class CurrentStateService {
   private routeObserver = null;
 
   constructor(private route: ActivatedRoute) {
-    this.state.mobileState.value = window.innerWidth < this.mobileStateBreakPoint;
-    window.addEventListener('resize', (event) => {
+    this.state.mobileState.value =
+      window.innerWidth < this.mobileStateBreakPoint;
+    window.addEventListener("resize", (event) => {
       this.onResize(event);
     });
     this.initStateFromLocalStorage();
   }
 
   private saveStateToLocalStorage() {
-    localStorage.setItem('yiddish-dictionary-state', JSON.stringify(this.state));
+    localStorage.setItem(
+      "yiddish-dictionary-state",
+      JSON.stringify(this.state)
+    );
   }
 
   private initStateFromLocalStorage() {
-    const data = JSON.parse(localStorage.getItem('yiddish-dictionary-state'));
+    const data = JSON.parse(localStorage.getItem("yiddish-dictionary-state"));
     if (!data) {
       return;
     }
@@ -49,10 +52,10 @@ export class CurrentStateService {
 
   setResultComponentRouteObserver(routeObserver) {
     this.routeObserver = routeObserver;
-    this.routeObserver.params.subscribe( params => {
-      const senseId = params['lemma_id'];
+    this.routeObserver.params.subscribe((params) => {
+      const senseId = params["lemma_id"];
 
-      if (senseId === null || senseId === 'not_found') {
+      if (senseId === null || senseId === "not_found") {
         this.setSenseId(null, true);
       } else {
         this.setSenseId(senseId);
@@ -62,25 +65,47 @@ export class CurrentStateService {
 
   onResize(event) {
     const newMobileState = window.innerWidth < this.mobileStateBreakPoint;
-    if ( this.state.mobileState.value !== newMobileState ) {
+    if (this.state.mobileState.value !== newMobileState) {
       this.state.mobileState.value = newMobileState;
       this.mobileStateEmitter.emit(this.state.mobileState.value);
     }
   }
   // emitter getters
-  getSenseIdEmitter(): EventEmitter<any> {return this.senseIdEmitter; }
-  getNavbarOpenEmitter(): EventEmitter<any> {return this.navbarOpenEmitter; }
-  getSidebarRearchResultsPanelOpenEmitter(): EventEmitter<any> {return this.sidebarSearchResultsPanelOpenEmitter; }
-  getMobileStateEmitter(): EventEmitter<any> {return this.mobileStateEmitter; }
-  getListAlphabetStyleEmitter(): EventEmitter<any> {return this.listAlphabetStyleEmitter; }
-  getRightDetailPanelOpenEmitter(): EventEmitter<any> {return this.rightDetailPanelOpenEmitter; }
+  getSenseIdEmitter(): EventEmitter<any> {
+    return this.senseIdEmitter;
+  }
+  getNavbarOpenEmitter(): EventEmitter<any> {
+    return this.navbarOpenEmitter;
+  }
+  getSidebarRearchResultsPanelOpenEmitter(): EventEmitter<any> {
+    return this.sidebarSearchResultsPanelOpenEmitter;
+  }
+  getMobileStateEmitter(): EventEmitter<any> {
+    return this.mobileStateEmitter;
+  }
+  getListAlphabetStyleEmitter(): EventEmitter<any> {
+    return this.listAlphabetStyleEmitter;
+  }
+  getRightDetailPanelOpenEmitter(): EventEmitter<any> {
+    return this.rightDetailPanelOpenEmitter;
+  }
 
   // state getters
-  getMobileState(): boolean { return this.state.mobileState.value; }
-  getSidebarRearchResultsPanelOpen(): boolean { return this.state.sidebarSearchResultsPanelOpen.value; }
-  getSenseId() { return this.state.senseId.value; }
-  getListAlphabetStyle() { return this.state.listAlphabetStyle.value; }
-  getRightDetailPanelOpen() { return this.state.rightDetailPanelOpen.value; }
+  getMobileState(): boolean {
+    return this.state.mobileState.value;
+  }
+  getSidebarRearchResultsPanelOpen(): boolean {
+    return this.state.sidebarSearchResultsPanelOpen.value;
+  }
+  getSenseId() {
+    return this.state.senseId.value;
+  }
+  getListAlphabetStyle() {
+    return this.state.listAlphabetStyle.value;
+  }
+  getRightDetailPanelOpen() {
+    return this.state.rightDetailPanelOpen.value;
+  }
 
   // setters
   setNavbarOpen(state: boolean): void {

@@ -1,22 +1,21 @@
-import { Injectable } from '@angular/core';
-import {HttpEvent, HttpRequest, HttpResponse} from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpEvent, HttpRequest, HttpResponse } from "@angular/common/http";
 
 // setting to 30 minutes
 const maxAge = 1000 * 60 * 30;
 
 @Injectable()
 export class RequestCacheService {
-
   cache = new Map();
 
   constructor() {
     // setting interval to be one minute less then maxAge
-    setInterval(() => this.deleteExpiredEntries(), maxAge - (1000 * 60));
+    setInterval(() => this.deleteExpiredEntries(), maxAge - 1000 * 60);
   }
 
   private deleteExpiredEntries() {
     const expired = Date.now() - maxAge;
-    this.cache.forEach(entry => {
+    this.cache.forEach((entry) => {
       if (entry.lastRead < expired) {
         this.cache.delete(entry.url);
       }
@@ -39,11 +38,8 @@ export class RequestCacheService {
     const entry = {
       url,
       response,
-      lastRead: Date.now()
+      lastRead: Date.now(),
     };
     this.cache.set(url, entry);
   }
-
 }
-
-

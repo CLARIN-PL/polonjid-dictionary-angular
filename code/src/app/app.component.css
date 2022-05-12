@@ -4,11 +4,10 @@
 .main-row {
   min-height: 99vh;
 }
-.app-container{
+.app-container {
   padding-top: 119px;
   height: 100%;
 }
-.offset-top{
+.offset-top {
   padding-top: 10px;
 }
-

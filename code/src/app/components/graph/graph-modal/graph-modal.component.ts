@@ -1,6 +1,12 @@
-import {Component, EventEmitter, Inject, OnDestroy, OnInit} from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {Subscription} from 'rxjs';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  OnDestroy,
+  OnInit,
+} from "@angular/core";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Subscription } from "rxjs";
 
 export interface ModalOptions {
   senseId: string;
@@ -9,22 +15,22 @@ export interface ModalOptions {
 }
 
 @Component({
-  selector: 'app-graph-modal',
-  templateUrl: './graph-modal.component.html',
-  styleUrls: ['./graph-modal.component.css']
+  selector: "app-graph-modal",
+  templateUrl: "./graph-modal.component.html",
+  styleUrls: ["./graph-modal.component.css"],
 })
 export class GraphModalComponent implements OnInit, OnDestroy {
   senseId: string;
-  selectedUnitName: string = '';
+  selectedUnitName: string = "";
   selectedUnitNameSubscription: Subscription;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ModalOptions) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ModalOptions) {}
 
   ngOnInit() {
     this.selectedUnitName = this.data.topLabel;
     this.senseId = this.data.senseId;
     this.selectedUnitNameSubscription = this.data.topLabelEmitter.subscribe(
-      label => {
+      (label) => {
         this.selectedUnitName = label;
       }
     );
@@ -33,5 +39,4 @@ export class GraphModalComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.selectedUnitNameSubscription.unsubscribe();
   }
-
 }

@@ -2,33 +2,49 @@
   <div class="text-center col-12">
     <h3>No units found, try modifying your query.</h3>
   </div>
-  <hr>
+  <hr />
 </div>
 
-
-<div class="row main-area-row" [ngClass]="{'expanded':footerPanelHidden}">
-
+<div class="row main-area-row" [ngClass]="{ expanded: footerPanelHidden }">
   <!--GRAPH AREA-->
-  <div class="col-sm-12 col-md-8 graph-area" [ngClass]="{'col-sm-12 col-md-12': !rightPanelOpen}">
+  <div
+    class="col-sm-12 col-md-8 graph-area"
+    [ngClass]="{ 'col-sm-12 col-md-12': !rightPanelOpen }"
+  >
     <div *ngIf="!content" class="title-row"></div>
     <div *ngIf="content" class="row title-row">
       <div class="text-center col-12">
         <h3>{{ content.lemma }}</h3>
         <h4>
           <span matTooltip="Part of speech">{{ content.partOfSpeech }}</span>
-          <span *ngIf="content.grammaticalGender" matTooltip="Grammatical qualifier">,
+          <span
+            *ngIf="content.grammaticalGender"
+            matTooltip="Grammatical qualifier"
+            >,
             {{ content.grammaticalGender }}
           </span>
-          <span *ngIf="content.flag !== 'Yiddish'" matTooltip="Lexicon">, {{ content.flag }}
+          <span *ngIf="content.flag !== 'Yiddish'" matTooltip="Lexicon"
+            >, {{ content.flag }}
           </span>
         </h4>
-        <button *ngIf="mobile" class="show-graph-btn" mat-raised-button color="primary"
-                (click)="showGraphModal()">{{'show_graph_modal' | translate}}</button>
+        <button
+          *ngIf="mobile"
+          class="show-graph-btn"
+          mat-raised-button
+          color="primary"
+          (click)="showGraphModal()"
+        >
+          {{ "show_graph_modal" | translate }}
+        </button>
         <!--<button class="show-graph-btn" mat-raised-button color="primary" (click)="showGraphModal()">{{'show_graph_modal' | translate}}</button>-->
       </div>
     </div>
     <app-graph-main *ngIf="!mobile"></app-graph-main>
-    <button *ngIf="!mobile" class="expand-btn expand-right" (click)="toggleRightPanelOpen();">
+    <button
+      *ngIf="!mobile"
+      class="expand-btn expand-right"
+      (click)="toggleRightPanelOpen()"
+    >
       <i *ngIf="rightPanelOpen" class="fa fa-chevron-right"></i>
       <i *ngIf="!rightPanelOpen" class="fa fa-chevron-left"></i>
     </button>
@@ -36,22 +52,35 @@
   <!--GRAPH AREA END-->
 
   <!--SENSE DETAIL AREA-->
-  <div *ngIf="senseLoaded" class="col-sm-12 col-md-4 sense-detail-col" [ngClass]="{'d-none': !rightPanelOpen}">
+  <div
+    *ngIf="senseLoaded"
+    class="col-sm-12 col-md-4 sense-detail-col"
+    [ngClass]="{ 'd-none': !rightPanelOpen }"
+  >
     <h5 class="text-center">Linguistic information:</h5>
     <mat-card class="mb-2">
-
-      <mat-tab-group *ngIf="yiddishContentPresent" [selectedIndex]="currentYiddishTabIndex + 1"
-                     (selectedTabChange)="selectedTabChange($event)">
+      <mat-tab-group
+        *ngIf="yiddishContentPresent"
+        [selectedIndex]="currentYiddishTabIndex + 1"
+        (selectedTabChange)="selectedTabChange($event)"
+      >
         <mat-tab class="tab-title" label="Variants: " disabled></mat-tab>
         <mat-tab
           *ngFor="let content of yiddishContent"
-          [label]="content.differentAlphabetLemmas[listAlphabetStyle] + ' (' + content.yiddishVariant + ')'"
+          [label]="
+            content.differentAlphabetLemmas[listAlphabetStyle] +
+            ' (' +
+            content.yiddishVariant +
+            ')'
+          "
         >
           <div class="row area-row">
             <div *ngFor="let area of content.areas" class="col-12 area-row">
               <div class="card full-width">
                 <div class="card-body">
-                  <app-table-results [content]="area['fields']"></app-table-results>
+                  <app-table-results
+                    [content]="area['fields']"
+                  ></app-table-results>
                 </div>
               </div>
             </div>
@@ -60,28 +89,31 @@
       </mat-tab-group>
 
       <span *ngIf="!yiddishContentPresent && senseLoaded">
-            <div class="card full-width">
-                <div class="card-body">
-                  <app-table-results [content]="content.areas[0].fields"></app-table-results>
-                </div>
-              </div>
+        <div class="card full-width">
+          <div class="card-body">
+            <app-table-results
+              [content]="content.areas[0].fields"
+            ></app-table-results>
+          </div>
+        </div>
       </span>
-
     </mat-card>
 
     <div class="d-flex flex-wrap">
       <div class="flex-fill">
         <div *ngIf="senseLoaded && synonyms && synonyms.length > 0">
           <mat-card class="m-1">
-            <div class="row text-center" style="width: 100%;">
+            <div class="row text-center" style="width: 100%">
               <div class="col">
-                <h5>{{'synonyms' | translate}}:</h5>
+                <h5>{{ "synonyms" | translate }}:</h5>
               </div>
             </div>
             <div class="card full-width small-margin relations-area">
               <div class="card-body relations-content">
-                <span *ngFor="let sense of synonyms; let isLast=last">
-                  <a [routerLink]="'/detail/' + sense['id']">{{ sense['label']}}</a>
+                <span *ngFor="let sense of synonyms; let isLast = last">
+                  <a [routerLink]="'/detail/' + sense['id']">{{
+                    sense["label"]
+                  }}</a>
                   <span *ngIf="!isLast">, </span>
                 </span>
               </div>
@@ -93,15 +125,24 @@
       <div class="d-flex flex-wrap">
         <div class="flex-fill">
           <div
-            *ngIf="senseLoaded && relations && (relations['incoming'].length > 0 || relations['outgoing'].length > 0)">
+            *ngIf="
+              senseLoaded &&
+              relations &&
+              (relations['incoming'].length > 0 ||
+                relations['outgoing'].length > 0)
+            "
+          >
             <mat-card class="m-1">
-              <div class="row text-center" style="width: 100%;">
+              <div class="row text-center" style="width: 100%">
                 <div class="col">
-                  <h5>{{'lexical_relations' | translate}}:</h5>
+                  <h5>{{ "lexical_relations" | translate }}:</h5>
                 </div>
               </div>
               <div class="card full-width small-margin relations-area">
-                <app-relations-view class="card-body" [relations]="relations"></app-relations-view>
+                <app-relations-view
+                  class="card-body"
+                  [relations]="relations"
+                ></app-relations-view>
               </div>
             </mat-card>
           </div>
@@ -109,29 +150,49 @@
         <!--<div class="p-2 flex-fill bd-highlight align-content-around flex-wrap">-->
         <div class="d-flex flex-column flex-wrap">
           <div class="">
-            <mat-card class="m-1"
-                      *ngIf="yiddishContentPresent && yiddishContent[currentYiddishTabIndex]?.additionalFields.context">
-              <div class="row text-center" style="width: 100%;">
+            <mat-card
+              class="m-1"
+              *ngIf="
+                yiddishContentPresent &&
+                yiddishContent[currentYiddishTabIndex]?.additionalFields.context
+              "
+            >
+              <div class="row text-center" style="width: 100%">
                 <div class="col">
-                  <h5>{{'Context' | translate}}:</h5>
+                  <h5>{{ "Context" | translate }}:</h5>
                 </div>
               </div>
               <mat-card-content>
-                <p>{{ yiddishContent[currentYiddishTabIndex]?.additionalFields.context }}</p>
+                <p>
+                  {{
+                    yiddishContent[currentYiddishTabIndex]?.additionalFields
+                      .context
+                  }}
+                </p>
               </mat-card-content>
             </mat-card>
           </div>
 
           <div class="">
-            <mat-card class="m-1"
-                      *ngIf="yiddishContentPresent && yiddishContent[currentYiddishTabIndex]?.additionalFields.comment">
-              <div class="row text-center" style="width: 100%;">
+            <mat-card
+              class="m-1"
+              *ngIf="
+                yiddishContentPresent &&
+                yiddishContent[currentYiddishTabIndex]?.additionalFields.comment
+              "
+            >
+              <div class="row text-center" style="width: 100%">
                 <div class="col">
-                  <h5>{{'Comment' | translate}}:</h5>
+                  <h5>{{ "Comment" | translate }}:</h5>
                 </div>
               </div>
               <mat-card-content>
-                <p>{{ yiddishContent[currentYiddishTabIndex]?.additionalFields.comment }}</p>
+                <p>
+                  {{
+                    yiddishContent[currentYiddishTabIndex]?.additionalFields
+                      .comment
+                  }}
+                </p>
               </mat-card-content>
             </mat-card>
           </div>

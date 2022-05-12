@@ -1,38 +1,41 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import { HttpService } from '../../services/http.service';
-import {NgForm} from '@angular/forms';
-import {AvailableSearchFiltersService} from '../../services/configuration/available-search-filters.service';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { HttpService } from "../../services/http.service";
+import { NgForm } from "@angular/forms";
+import { AvailableSearchFiltersService } from "../../services/configuration/available-search-filters.service";
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: "app-search",
+  templateUrl: "./search.component.html",
+  styleUrls: ["./search.component.css"],
 })
 export class SearchComponent implements OnInit {
-  @ViewChild('form', { static: true }) form: NgForm;
+  @ViewChild("form", { static: true }) form: NgForm;
 
-  constructor(private http: HttpService, private availableSearchFilters: AvailableSearchFiltersService) { }
+  constructor(
+    private http: HttpService,
+    private availableSearchFilters: AvailableSearchFiltersService
+  ) {}
 
-  searchFields: {[id: string]: Object} = {};
+  searchFields: { [id: string]: Object } = {};
 
   advancedSearchKeys = [
-    'partOfSpeech',
-    'style',
-    'yiddishStatus',
-    'lexicalCharacteristic',
-    'yiddishDomain',
-    'yiddishDomainModifier',
-    'gramaticalGender',
-    'sortBy'
+    "partOfSpeech",
+    "style",
+    "yiddishStatus",
+    "lexicalCharacteristic",
+    "yiddishDomain",
+    "yiddishDomainModifier",
+    "gramaticalGender",
+    "sortBy",
   ];
 
   basicSearchKeys = [
-    'prefixes',
-    'suffixes',
-    'particle_root',
-    'etymological_root',
-    'particle_constituent',
-    'etymology'
+    "prefixes",
+    "suffixes",
+    "particle_root",
+    "etymological_root",
+    "particle_constituent",
+    "etymology",
   ];
 
   ngOnInit() {
@@ -46,7 +49,4 @@ export class SearchComponent implements OnInit {
   get() {
     return this.form.value;
   }
-
-
-
 }

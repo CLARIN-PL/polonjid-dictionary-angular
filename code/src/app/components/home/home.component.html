@@ -3,148 +3,188 @@
 <div class="container-fluid app-container">
   <div class="row">
     <div class="col-12 jumbotron jumbotron-fluid welcome">
-        <div class="container">
-          <!--<h5 class="display-4" [innerHtml]="'welcome_msg' | translate | saveHtml"></h5>-->
-          <h1 [innerHtml]="'welcome_msg' | translate | saveHtml"></h1>
-          <p class="lead">{{ 'home_page_small_instruction'  | translate}}
-          </p>
-        </div>
-
-      <div class="tutorial d-none d-sm-block">
-
-        <div class="line-oval right"></div>
-        <span class="tutorial-text top">
-          {{'explanation_keyboard' | translate}}
-          (<span *ngIf="useKeyboard">{{'tutorial_using_keyboard' | translate}}</span><span *ngIf="!useKeyboard">{{'tutorial_not_using_keyboard' | translate}}</span>)
-        </span>
-
+      <div class="container">
+        <!--<h5 class="display-4" [innerHtml]="'welcome_msg' | translate | saveHtml"></h5>-->
+        <h1 [innerHtml]="'welcome_msg' | translate | saveHtml"></h1>
+        <p class="lead">{{ "home_page_small_instruction" | translate }}</p>
       </div>
 
-      <app-input-with-keyboard [floatingSearch]="false" (advancedPanelOpen)="advancedPanelToggled($event)" (usingKeyboard)="usingKeyboardToggled($event)"></app-input-with-keyboard>
+      <div class="tutorial d-none d-sm-block">
+        <div class="line-oval right"></div>
+        <span class="tutorial-text top">
+          {{ "explanation_keyboard" | translate }}
+          (<span *ngIf="useKeyboard">{{
+            "tutorial_using_keyboard" | translate
+          }}</span
+          ><span *ngIf="!useKeyboard">{{
+            "tutorial_not_using_keyboard" | translate
+          }}</span
+          >)
+        </span>
+      </div>
+
+      <app-input-with-keyboard
+        [floatingSearch]="false"
+        (advancedPanelOpen)="advancedPanelToggled($event)"
+        (usingKeyboard)="usingKeyboardToggled($event)"
+      ></app-input-with-keyboard>
 
       <div class="tutorial d-none d-sm-block">
         <div class="line-oval left" [hidden]="advancedPanelOpened"></div>
-        <span class="tutorial-text bottom" [hidden]="advancedPanelOpened">{{'explanation_advanced_settings' | translate}}</span>
+        <span class="tutorial-text bottom" [hidden]="advancedPanelOpened">{{
+          "explanation_advanced_settings" | translate
+        }}</span>
       </div>
 
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <br>
-            <br>
-            <h5>NOTE: The current version of the dictionary is a work in progress. The available functionalities and content may be incomplete and are subject to change.
-              Any remarks and errors please send to: <a href="mailto:polonjid@wn.uw.edu.pl">polonjid@wn.uw.edu.pl</a></h5>
+            <br />
+            <br />
+            <h5>
+              NOTE: The current version of the dictionary is a work in progress.
+              The available functionalities and content may be incomplete and
+              are subject to change. Any remarks and errors please send to:
+              <a href="mailto:polonjid@wn.uw.edu.pl">polonjid@wn.uw.edu.pl</a>
+            </h5>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
   <div class="container">
     <div class="row">
-    <div class="col-12 col-md-4">
-
-      <mat-card class="card">
-        <a class="hidden-link-overlay" routerLink="/dictionary-content"></a>
-        <div class="main-page-icon-wrapper">
-          <i class="fas fa-book-open"></i>
-        </div>
-        <mat-card-header>
-          <mat-card-title><h4>Dictionary Content</h4></mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>
-            This dictionary is a product of a research project on Yiddish-Polish language contact...
-          </p>
-        </mat-card-content>
-        <mat-card-actions *ngIf="mobile">
-          <a mat-raised-button  color="primary" routerLink="/dictionary-content" class="btn btn-primary">{{ 'See' | translate}}</a>
-        </mat-card-actions>
-      </mat-card>
-
-    </div>
-    <div class="col-12 col-md-4">
-
-      <mat-card class="card">
-        <a class="hidden-link-overlay" routerLink="/instructions"></a>
-        <div class="main-page-icon-wrapper">
-          <i class="fas fa-info"></i>
-        </div>
-        <mat-card-header>
-          <mat-card-title><h4>How to Use</h4></mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>
-            The “Dictionary of Polish Borrowings in Yiddish” is designed around the concept of word families,
-            i.e. groups of related (cognate) words...
-          </p>
-        </mat-card-content>
-        <mat-card-actions *ngIf="mobile">
-          <a mat-raised-button  color="primary" routerLink="/instructions" class="btn btn-primary">{{ 'See' | translate}}</a>
-        </mat-card-actions>
-      </mat-card>
-
-    </div>
-    <div class="col-12 col-md-4">
-      <mat-card class="card">
-        <a class="hidden-link-overlay" routerLink="/sources"></a>
-        <div class="main-page-icon-wrapper">
-          <i class="fas fa-list-ul"></i>
-        </div>
-        <mat-card-header>
-          <mat-card-title><h4>Sources</h4></mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>
-            The main goal of our investigation was not to create an exhaustive dictionary
-            but rather to establish the grade of rootedness of Polish loanwords in Yiddish...
-          </p>
-        </mat-card-content>
-        <mat-card-actions *ngIf="mobile">
-          <a mat-raised-button  color="primary" routerLink="/sources" class="btn btn-primary">{{ 'See' | translate}}</a>
-        </mat-card-actions>
-      </mat-card>
+      <div class="col-12 col-md-4">
+        <mat-card class="card">
+          <a class="hidden-link-overlay" routerLink="/dictionary-content"></a>
+          <div class="main-page-icon-wrapper">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <mat-card-header>
+            <mat-card-title><h4>Dictionary Content</h4></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              This dictionary is a product of a research project on
+              Yiddish-Polish language contact...
+            </p>
+          </mat-card-content>
+          <mat-card-actions *ngIf="mobile">
+            <a
+              mat-raised-button
+              color="primary"
+              routerLink="/dictionary-content"
+              class="btn btn-primary"
+              >{{ "See" | translate }}</a
+            >
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-12 col-md-4">
+        <mat-card class="card">
+          <a class="hidden-link-overlay" routerLink="/instructions"></a>
+          <div class="main-page-icon-wrapper">
+            <i class="fas fa-info"></i>
+          </div>
+          <mat-card-header>
+            <mat-card-title><h4>How to Use</h4></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              The “Dictionary of Polish Borrowings in Yiddish” is designed
+              around the concept of word families, i.e. groups of related
+              (cognate) words...
+            </p>
+          </mat-card-content>
+          <mat-card-actions *ngIf="mobile">
+            <a
+              mat-raised-button
+              color="primary"
+              routerLink="/instructions"
+              class="btn btn-primary"
+              >{{ "See" | translate }}</a
+            >
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-12 col-md-4">
+        <mat-card class="card">
+          <a class="hidden-link-overlay" routerLink="/sources"></a>
+          <div class="main-page-icon-wrapper">
+            <i class="fas fa-list-ul"></i>
+          </div>
+          <mat-card-header>
+            <mat-card-title><h4>Sources</h4></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              The main goal of our investigation was not to create an exhaustive
+              dictionary but rather to establish the grade of rootedness of
+              Polish loanwords in Yiddish...
+            </p>
+          </mat-card-content>
+          <mat-card-actions *ngIf="mobile">
+            <a
+              mat-raised-button
+              color="primary"
+              routerLink="/sources"
+              class="btn btn-primary"
+              >{{ "See" | translate }}</a
+            >
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </div>
   </div>
-  </div>
 
-  <br>
-  <br>
-  <br>
-  <br>
-
+  <br />
+  <br />
+  <br />
+  <br />
 </div>
-
 
 <footer class="container-fluid">
   <div class="row">
     <div class="col-12">
-    <div class="container">
-      <div class="col-12 vertical-padding">
-        <!--<p>-->
+      <div class="container">
+        <div class="col-12 vertical-padding">
+          <!--<p>-->
 
           <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut posuere arcu. Phasellus quis justo et metus blandit tempus a nec ex. Fusce sollicitudin consequat diam. Vestibulum ut dolor sit amet urna tempus ornare non eget mi. Integer quis odio eu purus viverra ornare. Morbi aliquet viverra dapibus. Integer mollis turpis risus, iaculis tempus metus fringilla et. Phasellus ut orci est. Ut dui dolor, interdum ac tincidunt sit amet, vulputate maximus lacus. Nunc semper consectetur quam, sit amet lobortis purus bibendum quis. Cras mattis augue sed mauris iaculis, ac mattis neque bibendum. Vestibulum dapibus pellentesque purus. Nullam non interdum augue. Mauris urna enim, gravida quis viverra quis, consectetur quis turpis.-->
 
           <!--Praesent vel feugiat elit, id placerat tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed semper gravida nulla non rutrum. Proin vehicula nec arcu et accumsan. Mauris eu venenatis odio, eu dignissim urna. Nulla non ornare ex. Aenean semper elit dictum quam luctus suscipit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer posuere purus justo, ut sodales mi placerat sed. Nunc maximus nulla ac consequat scelerisque.-->
 
-        <!--</p>-->
+          <!--</p>-->
 
-        <!--<div class="section-text wow fadeInDown" data-wow-delay="500ms">-->
+          <!--<div class="section-text wow fadeInDown" data-wow-delay="500ms">-->
           <!--<p style="text-align: right; font-size: 20px;"><u><a href="https://polonjid.wn.uw.edu.pl/wp-content/uploads/Call-for-submissions_korr.pdf"><strong>Please review our call for submissions for a&nbsp;monograph publication on Yiddish-Slavic language contact. (click here)</strong></a></u></p>-->
           <!--<p>&nbsp;</p>-->
-          <p style="text-align: right;">*Project funded by the National Science Centre (NCN) as part of the Opus 11 competition,</p>
-          <p style="text-align: right;">UMO-2016/21/B/HS2/02549, 2017‑2020.</p>
-          <p style="text-align: right;">Contractor:</p>
-          <p style="text-align: right;">Faculty of Modern Languages, University of Warsaw</p>
-          <p style="text-align: right;">ul. Dobra 55, 00-312, Warsaw</p>
-          <p style="text-align: right;">Poland</p>
-          <p style="text-align: right;"><a href="http://www.neofilologia.uw.edu.pl"><em>www.neofilologia.uw.edu.pl</em></a></p>
-          <p style="text-align: right;"><a href="http://plwordnet.pwr.wroc.pl/wordnet/"><em>http://plwordnet.pwr.wroc.pl/wordnet/</em></a></p>
-          <p style="text-align: right;"><em>polonjid@wn.uw.edu.pl</em></p>
-        <!--</div>-->
+          <p style="text-align: right">
+            *Project funded by the National Science Centre (NCN) as part of the
+            Opus 11 competition,
+          </p>
+          <p style="text-align: right">UMO-2016/21/B/HS2/02549, 2017‑2020.</p>
+          <p style="text-align: right">Contractor:</p>
+          <p style="text-align: right">
+            Faculty of Modern Languages, University of Warsaw
+          </p>
+          <p style="text-align: right">ul. Dobra 55, 00-312, Warsaw</p>
+          <p style="text-align: right">Poland</p>
+          <p style="text-align: right">
+            <a href="http://www.neofilologia.uw.edu.pl"
+              ><em>www.neofilologia.uw.edu.pl</em></a
+            >
+          </p>
+          <p style="text-align: right">
+            <a href="http://plwordnet.pwr.wroc.pl/wordnet/"
+              ><em>http://plwordnet.pwr.wroc.pl/wordnet/</em></a
+            >
+          </p>
+          <p style="text-align: right"><em>polonjid@wn.uw.edu.pl</em></p>
+          <!--</div>-->
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </footer>

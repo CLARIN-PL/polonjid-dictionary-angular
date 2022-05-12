@@ -5,40 +5,37 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import "variables.scss";
 
-.form-group{
-  margin-bottom: .5rem;
+.form-group {
+  margin-bottom: 0.5rem;
 }
 
-.small-margin{
+.small-margin {
   margin: 10px;
 }
-.full-width{
+.full-width {
   width: 100%;
 }
-.main-content{
+.main-content {
   padding-top: 15px;
 }
 
-.mat-select-content{
+.mat-select-content {
   z-index: 10000;
 }
 
 /* You can add global styles to this file, and also import other style files */
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
   border-radius: 2px;
   background-color: $background-color;
 }
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
   width: 8px;
   height: 4px;
   background-color: $background-color;
 }
 
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
   border-radius: 4px;
   //background-color: #3f51b5;
   background-color: $primary-color;
@@ -46,30 +43,48 @@
 
 /* roboto-regular - latin */
 @font-face {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  src: url('/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.eot'); /* IE9 Compat Modes */
-  src: local('Roboto'), local('Roboto-Regular'),
-  url('/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
-  url('/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.woff') format('woff'), /* Modern Browsers */
-  url('/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-  url('/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+  src: url("/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.eot"); /* IE9 Compat Modes */
+  src: local("Roboto"), local("Roboto-Regular"),
+    url("/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */
+      url("/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.woff")
+      format("woff"),
+    /* Modern Browsers */
+      url("/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("/assets/fonts/roboto/roboto-v18-latin_latin-ext-regular.svg#Roboto")
+      format("svg"); /* Legacy iOS */
 }
 
 /* montserrat-regular - latin */
 @font-face {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
-  src: url('/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.eot'); /* IE9 Compat Modes */
-  src: local('Montserrat Regular'), local('Montserrat-Regular'),
-  url('/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
-  url('/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.woff') format('woff'), /* Modern Browsers */
-  url('/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-  url('/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.svg#Montserrat') format('svg'); /* Legacy iOS */
+  src: url("/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.eot"); /* IE9 Compat Modes */
+  src: local("Montserrat Regular"), local("Montserrat-Regular"),
+    url("/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */
+      url("/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.woff")
+      format("woff"),
+    /* Modern Browsers */
+      url("/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("/assets/fonts/montserrat/montserrat-v12-latin_latin-ext-regular.svg#Montserrat")
+      format("svg"); /* Legacy iOS */
 }
 
 /*settings fonts*/
@@ -103,10 +118,10 @@ a {
   color: $primary-color;
 }
 
-.mat-raised-button[_ngcontent-c4]:not([class*='mat-elevation-z']){
+.mat-raised-button[_ngcontent-c4]:not([class*="mat-elevation-z"]) {
   box-shadow: 0px 3px 1px -2px rgba($primary-color, 0.2),
-              0px 2px 2px 0px rgba($primary-color, 0.14),
-              0px 1px 5px 0px rgba($primary-color, 0.12) !important;
+    0px 2px 2px 0px rgba($primary-color, 0.14),
+    0px 1px 5px 0px rgba($primary-color, 0.12) !important;
 }
 button[mat-raised-button],
 button[mat-raised-button].mat-primary
@@ -116,7 +131,7 @@ button[mat-raised-button].mat-primary
   border-radius: 100px;
   background-color: white !important;
   color: $primary-color !important;
-  transition: background-color .1s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
 }
 
 button[mat-raised-button]:hover,
@@ -139,7 +154,7 @@ $background-size: 30px;
   height: $background-size !important;
   width: $background-size !important;
 
-  transition: color .2s, background-color .2s;
+  transition: color 0.2s, background-color 0.2s;
   &:hover {
     color: white;
     background-color: $primary-color;
@@ -155,7 +170,7 @@ $background-size: 30px;
 
   &:before {
     content: "\f358";
-    font-family: 'Font Awesome 5 Free';
+    font-family: "Font Awesome 5 Free";
     font-style: normal;
     font-weight: bold;
     text-decoration: inherit;

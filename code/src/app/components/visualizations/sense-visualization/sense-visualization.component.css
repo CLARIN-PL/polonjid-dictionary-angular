@@ -1,39 +1,39 @@
-.graph-main-container{
+.graph-main-container {
   border-color: #eeeeee;
   border-style: solid;
   border-width: 2px;
-  font-family: "Segoe UI",Arial,sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-#toolbox{
+#toolbox {
   position: absolute;
   top: 0;
   margin-left: 25%;
   width: 50%;
-  border: 2px solid #EEEEEE;
+  border: 2px solid #eeeeee;
   border-radius: 5px;
   z-index: 5;
   transition: all 0.3s;
   padding: 7px 20px 20px 20px;
   margin-bottom: 10px;
 }
-#toolbox:hover{
+#toolbox:hover {
   background-color: #fff;
 }
-#toolbox input{
+#toolbox input {
   background-color: inherit;
 }
-#toolbox:hover input{
+#toolbox:hover input {
   min-width: 300px;
   opacity: 1;
 }
-#toolbox:hover{
+#toolbox:hover {
   opacity: 1;
   cursor: pointer;
   /*padding-bottom: 40px;*/
 }
 
-#inspected-word{
+#inspected-word {
   min-width: 200px;
   min-height: 40px;
   font-size: 16px;
@@ -58,50 +58,50 @@
   color: white;
 }
 
-#hidden-file-upload{
+#hidden-file-upload {
   display: none;
 }
 
-#download-input{
+#download-input {
   margin: 0 0.5em;
 }
 
-#possible-senses{
+#possible-senses {
   list-style-type: none;
   margin: 0;
   padding: 0;
   max-height: 400px;
   overflow-y: scroll;
 }
-#possible-senses li{
+#possible-senses li {
   padding: 5px;
 }
-#possible-senses li:hover{
+#possible-senses li:hover {
   background-color: #eee;
 }
 
-.conceptG text{
+.conceptG text {
   pointer-events: none;
 }
 
-marker{
+marker {
   fill: #333;
 }
 
-g.conceptG circle{
-  fill: #F6FBFF;
+g.conceptG circle {
+  fill: #f6fbff;
   stroke: #333;
   stroke-width: 2px;
 }
 
-g.conceptG:hover circle{
+g.conceptG:hover circle {
   fill: rgb(200, 238, 241);
 }
 
-g.selected circle{
+g.selected circle {
   fill: rgb(250, 232, 255);
 }
-g.selected:hover circle{
+g.selected:hover circle {
   fill: rgb(250, 232, 255);
 }
 
@@ -116,15 +116,15 @@ path.dotted {
   stroke-dasharray: 6, 3;
 }
 
-path.link:hover{
+path.link:hover {
   stroke: rgb(94, 196, 204);
 }
 
-g.connect-node circle{
-  fill: #BEFFFF;
+g.connect-node circle {
+  fill: #beffff;
 }
 
-path.link.hidden{
+path.link.hidden {
   stroke-width: 0;
 }
 
@@ -138,14 +138,14 @@ polyline.expanded {
 
 /* marking selected nodes */
 g.node-selected polyline.inner-node {
-  fill: rgb(255,255,48);
+  fill: rgb(255, 255, 48);
 }
 
-text.relation-text{
-  font-size: .8em;
+text.relation-text {
+  font-size: 0.8em;
 }
 
-.hidden-list{
+.hidden-list {
   position: absolute;
   background-color: whitesmoke;
   overflow-y: scroll;
@@ -165,7 +165,7 @@ text.relation-text{
   background-color: #aaa;
 }
 
-#node-tooltip{
+#node-tooltip {
   position: absolute;
   color: #fff;
   text-align: center;
@@ -200,8 +200,12 @@ text.relation-text{
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 #download-picture {
@@ -211,16 +215,14 @@ text.relation-text{
   border: none;
   background-color: transparent;
   /*background-image:  url('../../../../graph-js/img/download-icon.png');*/
-  background-image:  url('../../../../graph-js/img/download-icon.png');
+  background-image: url("../../../../graph-js/img/download-icon.png");
   background-size: 50px 50px;
   height: 50px;
   width: 55px;
 
-  transition: top .2s;
+  transition: top 0.2s;
 }
 
-#download-picture:hover{
+#download-picture:hover {
   top: -55px;
 }
-
-
